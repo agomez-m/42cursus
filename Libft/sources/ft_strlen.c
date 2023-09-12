@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 13:34:15 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 13:34:56 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+int ft_strlen(const char *s)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
-    {
-        return (1);
-    }
-    return (0);
+    int i;
+
+    i = 0;
+    while (s[i])
+        i++;
+    return (i);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* cuenta el numero de caracteres de una cadena*/

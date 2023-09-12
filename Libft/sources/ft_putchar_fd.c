@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:52:26 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 17:53:11 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+void ft_putchar_fd(char c, int fd)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
-    {
-        return (1);
-    }
-    return (0);
+    write(fd, &c, 1);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* imprime un caracter en el fd indicado */

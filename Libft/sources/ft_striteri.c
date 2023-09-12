@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:50:37 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 17:51:09 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+void ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
+    unsigned int i;
+
+    i = 0;
+    if (!s || !f)
+        return ;
+    while (s[i])
     {
-        return (1);
+        f(i, &s[i]);
+        i++;
     }
-    return (0);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* aplica la funcion f a cada caracter de la cadena s,
+ pasandole su indice como primer argumento. 
+ Cada caracter se pasa por direccion a f 
+ para poder ser modificado si es necesario */

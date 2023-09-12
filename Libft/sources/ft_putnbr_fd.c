@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:56:48 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 17:57:06 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+void ft_putnbr_fd(int n, int fd)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
+    long int nb;
+
+    nb = n;
+    if (nb < 0)
     {
-        return (1);
+        ft_putchar_fd('-', fd);
+        nb = -nb;
     }
-    return (0);
+    if (nb >= 10)
+    {
+        ft_putnbr_fd(nb / 10, fd);
+        ft_putnbr_fd(nb % 10, fd);
+    }
+    else
+        ft_putchar_fd(nb + '0', fd);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* imprime un numero en el fd indicado */

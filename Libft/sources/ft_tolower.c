@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:36:59 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 16:37:14 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+int ft_tolower(int c)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
-    {
-        return (1);
-    }
-    return (0);
+    if (c >= 'A' && c <= 'Z')
+        return (c + 32);
+    return (c);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* convierte una letra mayuscula en minuscula */

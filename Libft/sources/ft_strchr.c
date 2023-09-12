@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:37:32 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 16:39:03 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+char *ft_strchr(const char *s, int c)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
+    while (*s)
     {
-        return (1);
+        if (*s == c)
+            return ((char *)s);
+        s++;
     }
-    return (0);
+    if (c == '\0')
+        return ((char *)s);
+    return (NULL);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* localiza la primera aparicion de c (convertido a char) en la cadena apuntada por s.
+   La función devuelve un puntero al carácter encontrado, o NULL si no se encuentra. */

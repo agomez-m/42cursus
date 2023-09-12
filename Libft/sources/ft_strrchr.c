@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:39:52 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 16:40:11 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+char *ft_strrchr(const char *s, int c)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
+    int i;
+
+    i = ft_strlen(s);
+    while (i >= 0)
     {
-        return (1);
+        if (s[i] == (char)c)
+            return ((char *)s + i);
+        i--;
     }
-    return (0);
+    return (NULL);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* busca un caracter en una cadena y devuelve un puntero a la ultima ocurrencia de c en s */        

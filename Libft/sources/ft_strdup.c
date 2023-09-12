@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:17:45 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 17:18:06 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+char *ft_strdup(const char *s1)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
+    char *ptr;
+    int i;
+
+    i = 0;
+    ptr = malloc(ft_strlen(s1) + 1);
+    if (!ptr)
+        return (NULL);
+    while (s1[i])
     {
-        return (1);
+        ptr[i] = s1[i];
+        i++;
     }
-    return (0);
+    ptr[i] = '\0';
+    return (ptr);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* reserva memoria para una cadena y la copia en la nueva memoria */

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:15:24 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 17:17:28 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+void *ft_calloc(size_t count, size_t size)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
-    {
-        return (1);
-    }
-    return (0);
+    void *ptr;
+
+    ptr = malloc(count * size);
+    if (!ptr)
+        return (NULL);
+    ft_bzero(ptr, count * size);
+    return (ptr);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* reserva memoria y la llena de ceros */

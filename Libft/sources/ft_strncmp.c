@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/12 13:32:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:45:03 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/12 16:45:52 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-int ft_isalpha(int c)
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    if((c >= 65 && c<=90) || (c >= 97 && c<=122))
+    size_t i;
+
+    i = 0;
+    while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
     {
-        return (1);
+        if (s1[i] != s2[i])
+            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+        i++;
     }
     return (0);
 }
 
-/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/
+/* compara los primeros n caracteres de dos cadenas 
+y devuelve un entero menor, igual o mayor que cero 
+si s1 es lexicográficamente menor, igual o mayor que s2. */
