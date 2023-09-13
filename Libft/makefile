@@ -6,13 +6,11 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:32:39 by agomez-m          #+#    #+#              #
-#    Updated: 2023/09/12 20:01:48 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/09/13 12:54:21 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_DIR = ./sources/
-
-SRC = $(SRC_DIR)ft_atoi.c \
+SRC = 	$(SRC_DIR)ft_atoi.c \
 	$(SRC_DIR)ft_bzero.c \
 	$(SRC_DIR)ft_calloc.c \
 	$(SRC_DIR)ft_isalnum.c \
