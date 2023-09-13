@@ -6,54 +6,83 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:32:39 by agomez-m          #+#    #+#              #
-#    Updated: 2023/09/12 18:41:45 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/09/12 20:01:48 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJS_DIR = ./sources/
+SRC_DIR = ./sources/
 
-OBJS    =	ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o \
-            ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memccpy.o \
-            ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o \
-            ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o \
-            ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o \
-            ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o \
-            ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o\
+SRC = $(SRC_DIR)ft_atoi.c \
+	$(SRC_DIR)ft_bzero.c \
+	$(SRC_DIR)ft_calloc.c \
+	$(SRC_DIR)ft_isalnum.c \
+	$(SRC_DIR)ft_isalpha.c \
+	$(SRC_DIR)ft_isascii.c \
+	$(SRC_DIR)ft_isdigit.c \
+	$(SRC_DIR)ft_isprint.c \
+	$(SRC_DIR)ft_itoa.c \
+	$(SRC_DIR)ft_memchr.c \
+	$(SRC_DIR)ft_memcmp.c \
+	$(SRC_DIR)ft_memcpy.c \
+	$(SRC_DIR)ft_memmove.c \
+	$(SRC_DIR)ft_memset.c \
+	$(SRC_DIR)ft_putchar_fd.c \
+	$(SRC_DIR)ft_putendl_fd.c \
+	$(SRC_DIR)ft_putnbr_fd.c \
+	$(SRC_DIR)ft_putstr_fd.c \
+	$(SRC_DIR)ft_split.c \
+	$(SRC_DIR)ft_strchr.c \
+	$(SRC_DIR)ft_strdup.c \
+	$(SRC_DIR)ft_strjoin.c \
+	$(SRC_DIR)ft_strlcat.c \
+	$(SRC_DIR)ft_strlcpy.c \
+	$(SRC_DIR)ft_strlen.c \
+	$(SRC_DIR)ft_strmapi.c \
+	$(SRC_DIR)ft_strncmp.c \
+	$(SRC_DIR)ft_strnstr.c \
+	$(SRC_DIR)ft_strrchr.c \
+	$(SRC_DIR)ft_strtrim.c \
+	$(SRC_DIR)ft_substr.c \
+	$(SRC_DIR)ft_tolower.c \
+	$(SRC_DIR)ft_toupper.c
 
-OBJS_BONUS_DIR = ./bonus/
+BONUS = $(BONUS_DIR)ft_lstadd_back.c \
+	$(BONUS_DIR)ft_lstadd_front.c \
+	$(BONUS_DIR)ft_lstclear.c \
+	$(BONUS_DIR)ft_lstdelone.c \
+	$(BONUS_DIR)ft_lstiter.c \
+	$(BONUS_DIR)ft_lstlast.c \
+	$(BONUS_DIR)ft_lstmap.c \
+	$(BONUS_DIR)ft_lstnew.c \
+	$(BONUS_DIR)ft_lstsize.c
+	
+OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(BONUS:.c=.o)
 
-OBJS_BONUS = ft_lstadd_back_bonus.o ft_lstadd_front_bonus.o \
-            ft_lstclear_bonus.o ft_lstdelone_bonus.o ft_lstiter_bonus.o \
-            ft_lstlast_bonus.o ft_lstmap_bonus.o ft_lstnew_bonus.o \
-            ft_lstsize_bonus.o\
+NAME = libft.a
 
-NAME    =   libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-CC      =   gcc
+RM = rm -f
 
-RM      =   rm -f
+all: $(NAME)
 
-CFLAGS  =   -Wall -Wextra -Werror
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
-.c.o:
-            ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-            
-${NAME}:    ${OBJS}
-            ar rc ${NAME} ${OBJS}
-            ranlib ${NAME}
-            
-all:        ${NAME}
-
-bonus:      ${OBJS} ${OBJS_BONUS}
-            ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
-            ranlib ${NAME}
-            
+bonus: $(OBJ) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+	
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 clean:
-            ${RM} ${OBJS} ${OBJS_BONUS}
-            
-fclean:     clean
-            ${RM} ${NAME}
-            
-re:         fclean all
+	$(RM) $(OBJ) $(OBJ_BONUS)
+	
+fclean: clean
+	$(RM) $(NAME)
+	
+re: fclean all
 
-.PHONY:     all clean fclean re bonus
+.PHONY: all clean fclean re bonus
