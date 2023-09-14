@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:18:49 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:28:08 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:51:16 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,20 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
    La función devuelve la longitud de 
    la cadena src + la longitud de la cadena dst.
 */
+/*
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char	*src;
+	char	*dst;
+	size_t	dstsize;
+
+	src = "Hola";
+	dst = "Adios";
+	dstsize = 1;
+	printf("%zu\n", ft_strlcat(dst, src, dstsize));
+	printf("%zu\n", strlcat (dst, src, dstsize));
+	return (0);
+}*/

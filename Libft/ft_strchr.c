@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:37:32 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:27:03 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:22:07 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	char	altc;
+	char	*alts;
+	int		i;
+
+	i = 0;
+	alts = (char *)s;
+	altc = c;
+	while (alts[i] != altc)
 	{
-		if (*s == c)
-			return ((char *)s);
-		s++;
+		if (alts[i] == '\0')
+		{
+			return (NULL);
+		}
+		i++;
 	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
+	return ((char *)alts + i);
 }
 
 /* localiza la primera aparicion 

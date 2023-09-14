@@ -6,50 +6,61 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:37:50 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:09:05 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:30:34 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_digits(int n)
+static char	*ft_array(char *x, unsigned int number, long int len)
 {
-	int	count;
+	while (number > 0)
+	{
+		x[len--] = 48 + (number % 10);
+		number = number / 10;
+	}
+	return (x);
+}
 
-	count = 0;
+static long int	ft_len(int n)
+{
+	int					len;
+
+	len = 0;
 	if (n <= 0)
-		count++;
+		len = 1;
 	while (n != 0)
 	{
-		n /= 10;
-		count++;
+		len++;
+		n = n / 10;
 	}
-	return (count);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*ptr;
-	int		i;
-	int		sign;
+	char				*x;
+	long int			len;
+	unsigned int		number;
+	int					sign;
 
-	i = ft_count_digits(n);
 	sign = 1;
-	ptr = (char *)malloc(sizeof(char) * (i + 1));
-	if (!ptr)
+	len = ft_len(n);
+	x = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(x))
 		return (NULL);
-	ptr[i--] = '\0';
+	x[len--] = '\0';
+	if (n == 0)
+		x[0] = '0';
 	if (n < 0)
 	{
-		ptr[0] = '-';
-		sign = -1;
+		sign *= -1;
+		number = n * -1;
+		x[0] = '-';
 	}
-	while (i >= 0 && ptr[i] != '-')
-	{
-		ptr[i--] = (n % 10) * sign + '0';
-		n /= 10;
-	}
-	return (ptr);
+	else
+		number = n;
+	x = ft_array(x, number, len);
+	return (x);
 }
-
 /* convierte un entero a una cadena de caracteres */

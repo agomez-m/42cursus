@@ -6,7 +6,7 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:32:39 by agomez-m          #+#    #+#              #
-#    Updated: 2023/09/13 12:54:21 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/09/14 12:15:08 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC = 	$(SRC_DIR)ft_atoi.c \
 	$(SRC_DIR)ft_strlcpy.c \
 	$(SRC_DIR)ft_strlen.c \
 	$(SRC_DIR)ft_strmapi.c \
+	$(SRC_DIR)ft_striteri.c \
 	$(SRC_DIR)ft_strncmp.c \
 	$(SRC_DIR)ft_strnstr.c \
 	$(SRC_DIR)ft_strrchr.c \

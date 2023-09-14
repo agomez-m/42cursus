@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:22:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:45:02 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:43:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
 	j = ft_strlen(s1);
+	if (i == j)
+		return (ft_strdup(""));
 	while (j > i && ft_strchr(set, s1[j]))
 		j--;
 	str = (char *)malloc(sizeof(char) * (j - i + 2));
