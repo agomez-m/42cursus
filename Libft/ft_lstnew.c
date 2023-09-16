@@ -24,4 +24,5 @@ t_list	*ft_lstnew(void *content)
 	return (new);
 }
 
-/* crea un nuevo elemento de la lista */
+/* crea un nuevo elemento de la lista
+con el argumento pasado como contenido*/
