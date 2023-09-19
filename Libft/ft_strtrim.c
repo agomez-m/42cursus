@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:22:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/14 12:43:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:10:26 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-/*Elimina todos los caracteres de la string ’set’
+/*
+
+Elimina todos los caracteres de la string ’set’
 desde el principio y desde el final de ’s1’, hasta
 encontrar un caracter no perteneciente a ’set’. La
 string resultante se devuelve con una reserva de
