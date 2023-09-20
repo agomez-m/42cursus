@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:18:49 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:16 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:27:32 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	j;
+	size_t	dest_len;
+	size_t	src_len;
 
-	i = 0;
-	j = 0;
-	while (dst[i] && i < dstsize)
-		i++;
-	while (src[j] && (i + j + 1) < dstsize)
-	{
-		dst[i + j] = src[j];
-		j++;
-	}
-	if (i < dstsize)
-		dst[i + j] = '\0';
-	return (i + ft_strlen(src));
+	src_len = ft_strlen(src);
+	if (NULL == dst && 0 == dstsize)
+		return (src_len);
+	dest_len = ft_strlen(dst);
+	if (dest_len >= dstsize)
+		return (src_len + dstsize);
+	else
+		dstsize -= dest_len;
+	ft_strlcpy(dst + dest_len, src, dstsize);
+	return (dest_len + src_len);
 }
 
 /* concatena la cadena src en la cadena dst, 

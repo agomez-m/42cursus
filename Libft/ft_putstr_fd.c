@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:32 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:13:25 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:40:53 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if (s)
+	{
+		while (*s)
+			write(fd, s++, 1);
+	}
 }
 
 /* imprime una cadena en el fd indicado */

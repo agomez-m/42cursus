@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:04:21 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:29:15 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:37:43 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
 	size_t	j;
+	size_t	k;
 
-	i = 0;
-	if (needle[i] == '\0')
+	j = 0;
+	if (!*needle || (NULL == haystack && !len))
 		return ((char *)haystack);
-	while (haystack[i] && i < len)
+	while (*(haystack + j) && j < len)
 	{
-		j = 0;
-		while (needle[j] && haystack[i + j]
-			&& needle[j] == haystack[i + j] && i + j < len)
-			j++;
-		if (needle[j] == '\0')
-			return ((char *)haystack + i);
-		i++;
+		k = 0;
+		while (*(haystack + j + k) == *(needle + k) && (k + j) < len)
+		{
+			if (0 == *(needle + k + 1))
+				return ((char *)haystack + j);
+			++k;
+		}
+		++j;
 	}
 	return (NULL);
 }
 
-/* busca una subcadena en una cadena y 
-devuelve un puntero a la primera ocurrencia de needle en haystack */
+
+/* este código está diseñado para buscar una subcadena representada por needle
+ dentro de otra cadena haystack y, cuando se encuentra, devuelve un puntero
+  a la ubicación de la subcadena en la cadena haystack.*/
