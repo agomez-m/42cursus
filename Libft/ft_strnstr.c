@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:04:21 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/20 20:37:43 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:34:17 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
-
 
 /* este código está diseñado para buscar una subcadena representada por needle
  dentro de otra cadena haystack y, cuando se encuentra, devuelve un puntero
