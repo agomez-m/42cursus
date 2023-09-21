@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/20 20:41:30 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:20:27 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:27:51 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (s)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}	
+	char	*ptr;
+	size_t	len_s1;
+	size_t	len_s2;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	ptr = malloc(len_s1 + len_s2 + 1);
+	if (!ptr)
+		return (NULL);
+	ft_memcpy(ptr, s1, len_s1);
+	ft_memcpy(ptr + len_s1, s2, len_s2);
+	ptr[len_s1 + len_s2] = '\0';
+	return (ptr);
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/* reserva memoria para una cadena y la copia en la nueva memoria */

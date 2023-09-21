@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/20 20:41:30 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:59:24 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:11:26 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (s)
+	unsigned char	*p1;
+	unsigned char	*p2;
+
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	while (n--)
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}	
+		if (*p1 != *p2)
+			return (*p1 - *p2);
+		p1++;
+		p2++;
+	}
+	return (0);
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/* compara los primeros n bytes de las cadenas s1 y s2. 
+Devuelve un entero menor, igual o mayor que cero si s1 es
+lexicográficamente menor, igual o mayor que s2. */

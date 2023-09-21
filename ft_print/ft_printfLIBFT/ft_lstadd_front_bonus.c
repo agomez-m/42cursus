@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/20 20:41:30 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 18:21:24 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:09:30 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (s)
+	if (lst && new)
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}	
+		new->next = *lst;
+		*lst = new;
+	}
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/* agrega un elemento al principio de la lista */

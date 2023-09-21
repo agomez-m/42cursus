@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/20 20:41:30 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 18:35:08 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:09:42 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (s)
+	t_list	*tmp;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}	
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/* elimina y libera la memoria del elementoNODO pasado como     
+parámetro y de todos los elementosNODOS siguientes, con ’del’ y free(3).
+Por último, el puntero inicial debe pasar a NULL.*/
