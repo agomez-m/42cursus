@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:03:10 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/25 14:36:40 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:22:38 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-int ft_print_char(int c);
-int ft_print_str(char *str);
-int ft_print_digit(long n, int base);
-int ft_printf(const char *format, ...);
+int		ft_print_char(int c);
+int		ft_print_str(char *str);
+int		ft_print_digit(long n, int base);
+int		ft_print_digitx(long n, int base);
+int		ft_print_u(unsigned int n);
+int		ft_putpoi(unsigned long long ptr);
+int		ft_printf(const char *format, ...);
 
 #endif
-

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 13:07:26 by agomez-m          #+#    #+#              #
-#    Updated: 2023/09/25 14:40:56 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/09/25 18:23:04 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ PRINTF_SRCS	= ft_printf.c \
 				ft_print_char.c \
 				ft_print_str.c \
 				ft_print_digit.c \
+				ft_print_digitX.c \
+				ft_print_u.c \
+				ft_print_poi.c
 
 OBJS		= $(PRINTF_SRCS:.c=.o)
 
