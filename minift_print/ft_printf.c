@@ -71,7 +71,8 @@ int ft_printf(const char *format, ...)
     int     count;
 
     va_start(ap, format);
-
+    if (!format)
+        return (-1);
     count = 0;
     while(*format  != '\0')
     {
