@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/25 14:59:33 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 13:57:23 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:06:35 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_bzero(void *s, size_t n)
 {
-	if (s)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}
+	ft_memset(s, 0, n);
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/*llena el arreglo s de ceros */

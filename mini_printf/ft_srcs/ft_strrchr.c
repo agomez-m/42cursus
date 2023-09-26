@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/25 14:59:33 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:39:52 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:44:40 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (s)
+	int	i;
+
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i--;
 	}
+	return (NULL);
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/* busca un caracter en una cadena y devuelve 
+un puntero a la ultima ocurrencia de c en s */

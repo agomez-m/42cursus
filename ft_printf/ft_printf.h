@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/25 14:59:33 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/25 13:03:10 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/25 18:22:38 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	if (s)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}
-}
+# include <unistd.h>
+# include <stdarg.h>
+# include "libft/libft.h"
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+int		ft_print_char(int c);
+int		ft_print_str(char *str);
+int		ft_print_digit(long n, int base);
+int		ft_print_digitx(long n, int base);
+int		ft_print_u(unsigned int n);
+int		ft_putpoi(unsigned long long ptr);
+int		ft_printf(const char *format, ...);
+
+#endif

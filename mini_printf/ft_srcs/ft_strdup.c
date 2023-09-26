@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 17:54:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/25 14:59:33 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:17:45 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:27:23 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strdup(const char *s1)
 {
-	if (s)
+	char	*ptr;
+	int		i;
+
+	i = 0;
+	ptr = malloc(ft_strlen(s1) + 1);
+	if (!ptr)
+		return (NULL);
+	while (s1[i])
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
+		ptr[i] = s1[i];
+		i++;
 	}
+	ptr[i] = '\0';
+	return (ptr);
 }
 
-/* imprime una cadena en el fd indicado y añade un salto de linea al final */
+/* reserva memoria para una cadena y la copia en la nueva memoria */
