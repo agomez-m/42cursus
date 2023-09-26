@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 18:37:21 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:10:00 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
+
+/* aplica la funcion f a cada elementoNODO de la lista */

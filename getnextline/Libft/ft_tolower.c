@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:36:59 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:30:11 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+int	ft_tolower(int c)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }
+
+/* convierte una letra mayuscula en minuscula */

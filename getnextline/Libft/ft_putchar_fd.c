@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:52:26 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/20 19:41:29 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	write(fd, &c, 1);
 }
+
+/* imprime un caracter en el fd indicado */

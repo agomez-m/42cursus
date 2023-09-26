@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 13:32:07 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/14 11:00:30 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+int	ft_isalpha(int c)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	{
+		return (1);
+	}
+	return (0);
 }
+
+/* Devuelve un entero, 0 si no es una letra y 1 si lo es*/

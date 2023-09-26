@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 13:32:16 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:39:40 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+int	ft_isdigit(int c)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	if ((c >= 48 && c <= 57))
+	{
+		return (1);
+	}
+	return (0);
 }
+
+/* Devuelve un entero, 0 si no es un numero y 1 si lo es*/

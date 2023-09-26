@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 16:57:14 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/13 11:11:13 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	unsigned char	*p;
+
+	p = (unsigned char *)s;
+	while (n--)
+	{
+		if (*p == (unsigned char)c)
+			return (p);
+		p++;
+	}
+	return (NULL);
 }
+
+/* busca el caracter c en los primeros n bytes de la cadena s */
