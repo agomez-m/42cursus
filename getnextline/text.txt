@@ -1,0 +1,25 @@
+char	*get_next_line(int fd)
+{
+	static t_list	*list;
+	char			*next_line;
+	
+	list = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
+		return (NULL);
+	create_list(&list, fd);
+	if (list == NULL)
+		return (NULL);
+	next_line = get_line(list);
+	polish_list (&list);
+	return (next_line);
+}
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+	int		lines;
+	lines = 1;
+	fd = open ("test.txt", O_RDONLY);
+	while ((line = get_next_line(fd)))
+		printf("%d->%s\n", lines++, line);

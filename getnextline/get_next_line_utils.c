@@ -6,19 +6,49 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:39:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/26 19:18:21 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:14:21 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./get_next_line.h"
 
-int	len_to_newline (t_list *list)
+t_list	*find_last_node(t_list *list)
+{
+	if (NULL == list)
+		return (NULL);
+	while (list->next)
+		list = list->next;
+	return (list);
+}
+
+int	found_new_line(t_list *list)
+{
+	int	i;
+
+	if (NULL == list)
+		return (0);
+	while (list)
+	{
+		i = 0;
+		while (list->str_buf[i] && i < BUFFER_SIZE)
+		{
+			if (list->str_buf[i] == '\n')
+				return (1);
+			++i;
+		}
+		list = list->next;
+	}
+	return (0);
+}
+
+int	len_to_newline(t_list *list)
 {
 	int	i;
 	int	len;
-	
+
 	if (NULL == list)
 		return (0);
+	len = 0;
 	while (list != NULL)
 	{
 		i = 0;
@@ -48,9 +78,9 @@ void	copy_str(t_list *list, char *str)
 	while (list)
 	{
 		i = 0;
-		while (list->str_buf[i]  != '\0')
+		while (list->str_buf[i] != '\0')
 		{
-			if (list->str_buf[i]  == '\n')
+			if (list->str_buf[i] == '\n')
 			{
 				str[k++] = '\n';
 				str[k] = '\0';
@@ -61,4 +91,27 @@ void	copy_str(t_list *list, char *str)
 		list = list->next;
 	}
 	str[k] = '\0';
+}
+
+void	dealloc(t_list **list, t_list *clean_node, char *buf)
+{
+	t_list	*tmp;
+
+	if (NULL == *list)
+		return ;
+	while (*list)
+	{
+		tmp = (*list)->next;
+		free((*list)->str_buf);
+		free(*list);
+		*list = tmp;
+	}
+	*list = NULL;
+	if (clean_node->str_buf[0])
+		*list = clean_node;
+	else
+	{
+		free(buf);
+		free(clean_node);
+	}
 }
