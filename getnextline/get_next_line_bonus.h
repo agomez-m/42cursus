@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 18:14:36 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/29 13:21:42 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/29 12:15:04 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/29 14:41:52 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
@@ -31,7 +31,7 @@ typedef struct s_list
 char		*get_next_line(int fd);
 char		*get_line(t_list *list);
 void		create_list(t_list **list, int fd);
-void		append(t_list **list, char *buf);
+void		append(t_list **list, char *buf, int fd);
 void		polish_list(t_list **list);
 t_list		*find_last_node(t_list *list);
 int			found_new_line(t_list *list);

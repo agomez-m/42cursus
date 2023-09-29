@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 18:39:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/29 13:10:56 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/29 12:16:02 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/29 14:34:49 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./get_next_line.h"
+#include "./get_next_line_bonus.h"
 
 int	found_new_line(t_list *list)
 {
