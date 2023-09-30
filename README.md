@@ -16,7 +16,7 @@ En este repositorio encontrarás una colección de proyectos realizados como par
    - Descripción: Creación de una biblioteca de funciones en C.
 
 4. [Born2beroot](https://github.com/agomez-m/42cursus/tree/main/Born2beroot)
-   - 
+   - Descripción: Creación de Máquina Virtual  
 5. []()
    - 
 ## Objetivos
