@@ -9,3 +9,10 @@ La biblioteca Libft es una colección de funciones en C que simplifican el desar
 ## Uso
 Incluye "libft.h" en tu código y usa las funciones de Libft..
 
+## Autor(es)
+
+Arturo Gómez + Youtube + GitHub + Campus42 + etc
+
+## Estado del Proyecto
+
+Terminado. Puntuacion 125
