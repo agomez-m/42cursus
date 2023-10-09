@@ -8,17 +8,24 @@ En este repositorio encontrarás una colección de proyectos realizados como par
 
 1. [ft_printf](https://github.com/agomez-m/42cursus/tree/main/ft_printf)
    - Descripción: Implementación de la función printf en C.
-   
+   - inspired code YTB "Oceano"  -> minifprint
+
 2. [get_next_line](https://github.com/agomez-m/42cursus/tree/main/getnextline)
    - Descripción: Implementación de una función para leer líneas de un archivo o entrada estándar.
+   - inspired code YTB "Oceano"
 
 3. [Libft](https://github.com/agomez-m/42cursus/tree/main/Libft)
    - Descripción: Creación de una biblioteca de funciones en C.
 
 4. [Born2beroot](https://github.com/agomez-m/42cursus/tree/main/Born2beroot)
    - Descripción: Creación de Máquina Virtual  
-5. []()
-   - 
+
+5. [Push_swap](https://github.com/agomez-m/42cursus/tree/main/Push_swap)
+   - Description: Función que ordena una serie de enteros
+   - inspired code YTB "Oceano" 
+
+6. []()
+- 
 ## Objetivos
 
 El objetivo de este repositorio es mostrar mi progreso y habilidades en programación y desarrollo de software. Cada proyecto representa un desafío único y una oportunidad de aprender nuevas habilidades y conceptos.
