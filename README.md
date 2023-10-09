@@ -34,7 +34,6 @@ El objetivo de este repositorio es mostrar mi progreso y habilidades en programa
 
 Si deseas obtener más información sobre cualquiera de estos proyectos o tienes alguna pregunta, no dudes en contactarme:
 
-- GitHub: [GitHub Profile](https://github.com/agomez-m)
 - LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/arturo-g%C3%B3mez-mart%C3%ADn-crespo-b7a5355a/?originalSubdomain=es)
 
 ¡Gracias por visitar mi repositorio!
