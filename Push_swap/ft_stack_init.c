@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:01:33 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/09 16:11:57 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:04:37 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_stack_init(t_stack **a, char **argv, bool flag_argc_2)
 	if (flag_argc_2)
 		ft_free_matrix(argv);
 }
-
+/*
 #include <stdio.h>
 int main ()
 {
@@ -77,4 +77,4 @@ int main ()
 		printf("a->data = %d\n with node adress %p\n", a->value, a);
 		a = a->next;
 	}
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:23:04 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/09 16:21:37 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:01:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	error_free(t_stack **a, char **argv, bool flag_argc_2)
+void	ft_error_free(t_stack **a, char **argv, bool flag_argc_2)
 {
 	ft_free_stack(a);
 	if (flag_argc_2)
