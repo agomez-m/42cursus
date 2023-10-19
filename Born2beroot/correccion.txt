@@ -1,0 +1,135 @@
+Antes de encender comprobamos que (apagamos maquina - sgoinfre detrás de users
+
+- signature.txt == .vdi diff SHASUM NOMBRE.VDI
+
+Duplicamos la maquina para que no cambie entre correcciones
+
+SHASUM .VDI
+
+Arrancamos maquina
+
+Rocky and debian, como funciona una MV y su propósito, 
+
+DEBIAN TIENE MAS PAQUETES, SABER LINUx PARA ISNTALAR, DEBIAN ES MAS ESTABLE, ACTUALLIZAR DEBIAN ES FACIL, GUI FACIL. 
+
+La VM es un software que simula un sistema de computación, varios entornos en un solo hardware físico 
+El propósito de las VM es crear un entorno de ejecución independiente de la plataforma de hardware y del SO, permite que un programa se ejecute siempre de la misma forma
+
+
+Aptitude and apt, what APPAmor and LVM is? 
+Apt y aptitude
+Aptitude es una version mejorada de apt, que es un admin de paquetes de nivel inferior y aptitude es de alto nivel. Aptitutde tiene mas características
+APPrmor es un model de sesguridad que permite al administrador bloquear capacidades de un programa
+LVm es un gestor de volumenes logico, asigna espacio en dispositivos de almacenamiento masivo, es mas flexible que los convencionales 
+
+Interfaz grafica! = ls /usr/bin/*session
+
+Display 10 mins CHECK 
+
+UFW status = sudo ufw status sudo service ufw status
+
+SHH started = sudo service ssh status
+
+SO = uname -v 
+
+Usuario en grupos = genet group GRUPO (sudo user42)
+
+Password policy 
+
+New user - password - rules?
+Sudo adduser NUEVOUSER
+
+New group evaluating and assign new user
+Sudo add group evaluating
+Sudo adducer NUEVOUSER evaluating - comprobamos con getent
+
+Por que es mejor una política de contraseñas fuerte?
+
+
+Hostname == agomez-m42
+
+Cambiar hostname y reiniciar bien
+Sudo nano /etc/hostname
+Sudo reboot 
+
+
+Re cambiar hostname a login42
+
+Como ver las particiones de disco 
+
+Comparar con el output del subject
+
+
+Sudo instalado
+
+New user creado tu user group
+
+
+Valor de sudo y reglas de implementación
+
+Ruta /var/log/sudo  existe y tiene un archivo con histórico de comandos sud 
+
+Ejecutar un comando sudoo y comprobar que se actualiza
+
+Ufw firewall esta instalado y funciona, para que sirve?
+
+Reglas port 4242
+
+Nueva regla para abrir 8080 y comprobar 
+
+Eliminar regla 
+
+Ssh instalado y funcionado, que es? 
+
+Ssh solo usa 4242 
+
+Conectarse via ssh con el nuevo usuario
+
+Script  - como funciona, enseñar código 
+
+Que es cron? Cambiar a 1 minuto 
+
+Parar script cuando el server se activa??
+
+Bonus
+
+Particiones, Wordpress, free choice service?? 
+
+
+
+sudo ufw status
+sudo service ufw status
+sudo service ssh status
+uname -v
+getent group sudo
+getent group user42
+sudo adduser name_user
+sudo addgroup evaluating
+sudo adduser name_user evaluating
+Genet group evaluating
+Hostname
+Sudo nano /etc/hostname
+Sudo nano /etc/hosts
+Sudo reboot
+Particiones -lsblk
+Which sudo o dpkg -s sudo 
+sudo adduser name_user sudo
+Genet group sudo 
+Reglas sudo nano /etc/sudoers.d/sudo_config
+/var/log/sudo y tiene un fichero y se actualiza
+dpkg -s ufw
+sudo service ufw status
+sudo ufw status numbered
+sudo ufw allow 8080
+sudo ufw status numbered
+sudo ufw delete num_rule
+which ssh
+sudo service ssh status
+ssh newuser@localhost -p 4242
+sudo crontab -u root -e
+sudo /etc/init.d/cron stop 
+sudo /etc/init.d/cron start
+
+
+
+

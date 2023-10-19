@@ -54,7 +54,7 @@ BONUS = $ ft_lstadd_back_bonus.c \
 	$ ft_lstmap_bonus.c \
 	$ ft_lstnew_bonus.c \
 	$ ft_lstsize_bonus.c
-	
+
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(BONUS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:15:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/30 10:35:28 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:27:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,25 +121,13 @@ int	main(void)
 	fd = open ("text.txt", O_RDONLY);
 	fd1 = open ("text1.txt", O_RDONLY);
 	fd2 = open ("text2.txt", O_RDONLY);
-	if (fd == -1) {
-        perror("Error opening file");
-        return 1;
-    }
-	if (fd1 == -1) {
-        perror("Error opening file1");
-        return 1;
-    }
-	if (fd2 == -1) {
-        perror("Error opening file2");
-        return 1;
-    }
-	/*while ((line = get_next_line(fd)))
+	
+	while ((line = get_next_line(fd)))
 		printf("%d->%s\n", lines++, line);
 	while ((line = get_next_line(fd1)))
 		printf("%d->%s\n", lines++, line);
 	while ((line = get_next_line(fd2)))
-		printf("%d->%s\n", lines++, line);*/
-	
+		printf("%d->%s\n", lines++, line);
 	line = get_next_line(fd);
 	printf("%s", line);
 	printf("%s", get_next_line(fd1));

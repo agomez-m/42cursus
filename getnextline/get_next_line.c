@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/29 13:58:36 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:36:27 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,16 @@ char	*get_next_line(int fd)
 	polish_list (&list);
 	return (next_line);
 }
-/*
+
+void leaks()
+{
+	system("leaks -q a.out");
+}
+
 #include <stdio.h>
 int	main(void)
 {
+	atexit(leaks);
 	int		fd;
 	char	*line;
 	int		lines;
@@ -122,8 +128,10 @@ int	main(void)
         return 1;
     }
 	while ((line = get_next_line(fd)))
+	{
 		printf("%d->%s\n", lines++, line);
+		free(line);
+	}
 	close(fd);
 	return (0);
 }
-*/
