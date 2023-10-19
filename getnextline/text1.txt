@@ -1,38 +1,3 @@
 0123456789012345678901234567890123456789
 17798789
 1
- Evalúa sólo el trabajo entregado en el repositorio Git
-del estudiante o grupo evaluado.
-
-- Comprueba dos veces que el repositorio Git pertenece alestudiante o
-grupo evaluado. Asegúrate de que el trabajo entregado es el solicitado
-por el proyecto y que "git clone" es utilizado en una carpeta vacía.
-
-- Comprueba cuidadosamente que no existan alias maliciosos usados para
-engañarte y hacerte evaluar trabajo subido a un repositorio no oficial.
-
-- Para evitar sorpresas, revisa los posibles scripts utilizados
-durante la entrega para facilitar la evaluación (test o automatizaciones).
-
-- Si como evaluador no has completado este proyecto todavía,
-debes leer el enunciado entero antes de empezar el proceso de evaluación.
-
-- Utiliza los flags disponibles en esta evaluación para señalar un
-repositorio vacío, un programa disfuncional, un fallo de norma,
-trampas, etc. En estos casos, la evaluación termina y la nota final es 0
-(o -42 en caso de trampa). Sin embargo, a excepción de trampas, se
-recomienda seguir revisando el trabajo (incluso si no está terminado)
-para identificar posibles fallos y evitar repetirlos en el futuro.
-
-- Recuerda que, durante la defensa, ningún segfault ni otros comportamientos
-prematuros, descontrolados o cierres del programa se toleran. En este
-caso, la nota final es 0. Utiliza el flag apropiado.
-Nunca debes editar ningún archivo salvo el de configuración, si existe.
-Si quieres editar un archivo, tómate el tiempo de explicar las razones
-al estudiante evaluado y asegúrate de que ambos estáis de acuerdo.
-
-- Debes también verificar la ausencia de leaks. Toda la memoria asignada
-en el heap debe liberarse previamente al final de la ejecución.
-Tienes permitido usar distintas herramientas disponibles en el ordenador,
-tales como leaks, valgrind o e_fence. En caso de leaks, utiliza el flag
-correspondiente.
