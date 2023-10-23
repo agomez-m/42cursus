@@ -6,14 +6,11 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:14:45 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 16:18:57 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:36:58 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
-#include <stdbool.h>
-#include <stdio.h>
 
 void	set_current_position(t_stack *stack)
 {

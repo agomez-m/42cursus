@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:58:58 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 17:44:37 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:55:35 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_stack
 	struct s_stack		*prev;
 }				t_stack;
 
+char	**ft_split2(char *str, char separator);
 
 //*** Handle errors-free ***
 void			ft_free_matrix(char **argv);

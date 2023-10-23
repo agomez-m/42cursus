@@ -6,13 +6,13 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:39:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 17:06:41 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:11:31 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	found_new_line(t_list *list)
+int	found_new_line(tc_list *list)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	found_new_line(t_list *list)
 	return (0);
 }
 
-t_list	*find_last_node(t_list *list)
+tc_list	*find_last_node(tc_list *list)
 {
 	if (NULL == list)
 		return (NULL);
@@ -41,7 +41,7 @@ t_list	*find_last_node(t_list *list)
 	return (list);
 }
 
-int	len_to_newline(t_list *list)
+int	len_to_newline(tc_list *list)
 {
 	int	i;
 	int	len;
@@ -67,7 +67,7 @@ int	len_to_newline(t_list *list)
 	return (len);
 }
 
-void	copy_str(t_list *list, char *str)
+void	copy_str(tc_list *list, char *str)
 {
 	int	i;
 	int	k;
@@ -93,9 +93,9 @@ void	copy_str(t_list *list, char *str)
 	str[k] = '\0';
 }
 
-void	dealloc(t_list **list, t_list *clean_node, char *buf)
+void	dealloc(tc_list **list, tc_list *clean_node, char *buf)
 {
-	t_list	*tmp;
+	tc_list	*tmp;
 
 	if (NULL == *list)
 		return ;

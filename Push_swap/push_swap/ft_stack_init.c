@@ -6,13 +6,11 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:01:33 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 12:40:34 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:37:03 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
-#include <stdlib.h>
 
 static	long	ft_atol(const char *str)
 {

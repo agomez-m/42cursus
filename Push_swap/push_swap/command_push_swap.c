@@ -6,14 +6,11 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:38:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 16:53:47 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:37:15 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 /*
  * Loop decays once

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:02:03 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 17:03:34 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:13:34 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	ft_strcmp(char *str_1, char *str_2)
 
 static void	error(t_stack **a, t_stack **b)
 {
-	free_stack(a);
-	free_stack(b);
+	ft_free_stack(a);
+	ft_free_stack(b);
 	write(2, "Error\n", 6);
 	exit(1);
 }
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 		return (0);
 	else if (2 == argc)
 		argv = ft_split(argv[1], 32);
-	stack_init(&a, argv + 1, 2 == argc);
+	ft_stack_init(&a, argv + 1, 2 == argc);
 	len = stack_len(a);
 	next_line = get_next_line(STDIN_FILENO);
 	while (next_line)

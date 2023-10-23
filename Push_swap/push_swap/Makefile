@@ -6,7 +6,7 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 16:54:54 by agomez-m          #+#    #+#              #
-#    Updated: 2023/10/23 17:36:54 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/10/23 18:44:12 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ LIBFT_DIR	= ./libft
 
 all : $(NAME)
 
-$(NAME) : $(ARCHIVE)
+$(NAME) : $(OBJS) $(LIBFT)
 	$(CC) $^ -o $@
-
-$(ARCHIVE): $(LIBFT) $(OBJS)
+	
+$(ARCHIVE): $(LIBFT) $(OBJS) 
 	$(MAKE_LIB) $@ $^
 
 $(LIBFT): 
@@ -42,6 +42,7 @@ bonus :
 clean :
 	@$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(OBJS) $(ARCHIVE)
+	cd ../checker && make clean
 
 fclean : clean
 	@$(MAKE) fclean -C $(LIBFT_DIR)

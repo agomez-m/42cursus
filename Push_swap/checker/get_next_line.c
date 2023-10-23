@@ -6,23 +6,23 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 17:06:26 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:16:49 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdlib.h>
 
-void	polish_list(t_list **list)
+void	polish_list(tc_list **list)
 {
-	t_list	*last_node;
-	t_list	*clean_node;
+	tc_list	*last_node;
+	tc_list	*clean_node;
 	int		i;
 	int		k;
 	char	*buf;
 
 	buf = malloc(BUFFER_SIZE + 1);
-	clean_node = malloc(sizeof(t_list));
+	clean_node = malloc(sizeof(tc_list));
 	if (NULL == buf || NULL == clean_node)
 	{
 		free(buf);
@@ -42,7 +42,7 @@ void	polish_list(t_list **list)
 	dealloc(list, clean_node, buf);
 }
 
-char	*get_line(t_list *list)
+char	*get_line(tc_list *list)
 {
 	int		str_len;
 	char	*next_str;
@@ -57,13 +57,13 @@ char	*get_line(t_list *list)
 	return (next_str);
 }
 
-void	append(t_list **list, char *buf)
+void	append(tc_list **list, char *buf)
 {
-	t_list	*new_node;
-	t_list	*last_node;
+	tc_list	*new_node;
+	tc_list	*last_node;
 
 	last_node = find_last_node(*list);
-	new_node = malloc (sizeof(t_list));
+	new_node = malloc (sizeof(tc_list));
 	if (NULL == new_node)
 		return ;
 	if (NULL == last_node)
@@ -74,12 +74,12 @@ void	append(t_list **list, char *buf)
 	new_node -> next = NULL;
 }
 
-void	create_list(t_list **list, int fd)
+void	create_list(tc_list **list, int fd)
 {
 	int		char_read;
 	char	*buf;
 
-	while (!found_new_line(*list))
+	while (!found_newline(*list))
 	{
 		buf = malloc(BUFFER_SIZE + 1);
 		if (NULL == buf)
@@ -97,7 +97,7 @@ void	create_list(t_list **list, int fd)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*list = NULL;
+	static tc_list	*list = NULL;
 	char			*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
