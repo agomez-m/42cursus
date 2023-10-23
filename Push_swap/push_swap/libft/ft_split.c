@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 11:59:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/09 12:00:07 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/12 17:36:02 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/15 19:14:01 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./libft.h"
 
 static int	ft_count_word(char const *s, char c)
 {
@@ -81,3 +81,25 @@ char	**ft_split(char const *s, char c)
 	strs[j] = 0;
 	return (strs);
 }
+/* reserva memoria para una matriz de cadenas y la copia en la nueva memoria 
+Reserva (utilizando malloc(3)) un array de strings
+resultante de separar la string ’s’ en substrings
+utilizando el caracter ’c’ como delimitador. El
+array debe terminar con un puntero NULL.*/
+/*
+#include <stdio.h>
+int main()
+{
+	char *str = "Hola que tal estas";
+	char **str2;
+	int i;
+
+	i = 0;
+	str2 = ft_split(str, ' ');
+	while (str2[i])
+	{
+		printf("%s\n", str2[i]);
+		i++;
+	}
+	return (0);
+}*/
