@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:23:04 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/09 17:01:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:21:52 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_free_matrix(char **argv)
 		return ;
 	while (argv[i])
 		free(argv[i++]);
-	free(argv - 1);
+	free(argv -1);
 }
 
 /*-1 se hace para asegurar que todos los elementos de la matriz 

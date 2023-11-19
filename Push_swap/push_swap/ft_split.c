@@ -6,12 +6,13 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 18:54:58 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 18:55:24 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:48:51 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stddef.h>
+#include <stdio.h>
 
 /*
  * Args at the command line are
@@ -62,7 +63,10 @@ static char	*get_next_word(char *str, char separator)
 		++len;
 	next_str = malloc((size_t)len * sizeof(char) + 1);
 	if (NULL == next_str)
-		return (NULL);
+		{
+			free(next_str);
+			return (NULL);
+		}
 	while ((str[cursor] != separator) && str[cursor])
 		next_str[i++] = str[cursor++];
 	next_str[i] = '\0';
@@ -94,19 +98,32 @@ char	**ft_split2(char *str, char separator)
 		exit(1);
 	vector_strings = malloc(sizeof(char *) * (size_t)(words_number + 2));
 	if (NULL == vector_strings)
-		return (NULL);
+		{
+			free(vector_strings);
+			return (NULL);
+		}
 	while (words_number-- >= 0)
 	{
 		if (0 == i)
 		{
 			vector_strings[i] = malloc(sizeof(char));
 			if (NULL == vector_strings[i])
+			{
+				free(vector_strings);
 				return (NULL);
+			}
 			vector_strings[i++][0] = '\0';
 			continue ;
 		}
 		vector_strings[i++] = get_next_word(str, separator);
 	}
 	vector_strings[i] = NULL;
+	printf("vector_strings[0] = %s\n", vector_strings[0]);
+	printf("vector_strings[1] = %s\n", vector_strings[1]);
+	printf("vector_strings[2] = %s\n", vector_strings[2]);
+	printf("vector_strings[3] = %s\n", vector_strings[3]);
+	printf("vector_strings[4] = %s\n", vector_strings[4]);
+	printf("vector_strings[5] = %s\n", vector_strings[5]);
+	printf("vector_strings[6] = %s\n", vector_strings[6]);
 	return (vector_strings);
 }

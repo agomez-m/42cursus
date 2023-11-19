@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:01:33 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 18:37:03 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/19 13:30:42 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_stack_init(t_stack **a, char **argv, bool flag_argc_2)
 		if (ft_error_repetition (*a, (int)nbr))
 			ft_error_free(a, argv, flag_argc_2);
 		ft_append_node(a, (int)nbr);
-		i++;
+		++i;
 	}
 	if (flag_argc_2)
 		ft_free_matrix(argv);

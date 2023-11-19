@@ -6,7 +6,7 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 16:54:54 by agomez-m          #+#    #+#              #
-#    Updated: 2023/10/23 18:44:12 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/10/23 20:06:40 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,17 @@ ARCHIVE = push_swap.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -O2 
 MAKE_LIB = ar -rcs
-CP = cp
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
-LIBFT		= ./libft/libft.a
-LIBFT_DIR	= ./libft
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT)
-	$(CC) $^ -o $@
-	
-$(ARCHIVE): $(LIBFT) $(OBJS) 
-	$(MAKE_LIB) $@ $^
+$(NAME) : $(ARCHIVE)
+	$(CC) $< -o $@
 
-$(LIBFT): 
-	@$(MAKE) -C $(LIBFT_DIR)
+$(ARCHIVE) : $(OBJS)
+	$(MAKE_LIB) $(ARCHIVE) $^
 
 %.o : %.c 
 	$(CC) $(CFLAGS) -c $< -o $@ 
@@ -40,15 +34,12 @@ bonus :
 	cd ../checker && make
 	
 clean :
-	@$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(OBJS) $(ARCHIVE)
-	cd ../checker && make clean
 
 fclean : clean
-	@$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 	cd ../checker && make fclean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclea re
