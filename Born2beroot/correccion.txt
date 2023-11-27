@@ -32,7 +32,7 @@ SHH started = sudo service ssh status
 
 SO = uname -v 
 
-Usuario en grupos = genet group GRUPO (sudo user42)
+Usuario en grupos = getent group GRUPO (sudo user42)
 
 Password policy 
 
@@ -40,8 +40,8 @@ New user - password - rules?
 Sudo adduser NUEVOUSER
 
 New group evaluating and assign new user
-Sudo add group evaluating
-Sudo adducer NUEVOUSER evaluating - comprobamos con getent
+Sudo addgroup evaluating
+Sudo adduser NUEVOUSER evaluating - comprobamos con getent
 
 Por que es mejor una política de contraseñas fuerte?
 
@@ -115,8 +115,11 @@ Particiones -lsblk
 Which sudo o dpkg -s sudo 
 sudo adduser name_user sudo
 Genet group sudo 
-Reglas sudo nano /etc/sudoers.d/sudo_config
+
+Reglas sudo 
+nano /etc/sudoers.d/sudo_config
 /var/log/sudo y tiene un fichero y se actualiza
+
 dpkg -s ufw
 sudo service ufw status
 sudo ufw status numbered
@@ -130,6 +133,8 @@ sudo crontab -u root -e
 sudo /etc/init.d/cron stop 
 sudo /etc/init.d/cron start
 
+Sudo systemctl disable cron
+Systemctl list-unit-files cron
 
 
 
