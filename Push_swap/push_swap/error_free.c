@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:23:04 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/05 18:21:52 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:10:10 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ argv se liberen , incluyendo el último elemento, que es NULL.
  Si comenzáramos desde 0, no liberaríamos NULL, ya que el bucle while se 
  detendría cuando llegara a NULL.*/
 
-void	ft_free_stack(t_stack **stack)
+void	ft_free_stack(t_node **stack)
 {
-	t_stack	*tmp;
-	t_stack	*act;
+	t_node	*tmp;
+	t_node	*act;
 
 	if (NULL == stack)
 		return ;
@@ -64,7 +64,7 @@ void	ft_free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	ft_error_free(t_stack **a, char **argv, bool flag_argc_2)
+void	ft_error_free(t_node **a, char **argv, bool flag_argc_2)
 {
 	ft_free_stack(a);
 	if (flag_argc_2)
@@ -73,7 +73,7 @@ void	ft_error_free(t_stack **a, char **argv, bool flag_argc_2)
 	exit(1);
 }
 
-int		ft_error_repetition(t_stack *a, int nbr)
+int		ft_error_repetition(t_node *a, int nbr)
 {
 	if (!a)
 		return (0);

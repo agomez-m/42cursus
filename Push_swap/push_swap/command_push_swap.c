@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:38:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 18:37:15 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:15:59 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
  * 		~cheapest_node tops is a
  * 		~relative target_node tops in b
 */
-static void	rotate_both(t_stack **a,
-						t_stack **b,
-						t_stack *cheapest_node)
+static void	rotate_both(t_node **a,
+						t_node **b,
+						t_node *cheapest_node)
 {
 	while (*a != cheapest_node->target_node
 		&& *b != cheapest_node)
@@ -28,9 +28,9 @@ static void	rotate_both(t_stack **a,
 	set_current_position(*b);
 }
 
-static void	reverse_rotate_both(t_stack **a,
-								t_stack **b,
-								t_stack *cheapest_node)
+static void	reverse_rotate_both(t_node **a,
+								t_node **b,
+								t_node *cheapest_node)
 {
 	while (*a != cheapest_node->target_node
 		&& *b != cheapest_node)
@@ -42,9 +42,9 @@ static void	reverse_rotate_both(t_stack **a,
 /*
  * Conclude the rotation of the stacks 
 */
-void	finish_rotation(t_stack **stack,
-							t_stack *top_node,
-							char stack_name)
+void	finish_rotation(t_node **stack,
+						t_node *top_node,
+						char stack_name)
 {
 	while (*stack != top_node)
 	{
@@ -71,9 +71,9 @@ void	finish_rotation(t_stack **stack,
  * 1)Make the target nodes emerge
  * 2)push in A
 */
-static void	move_nodes(t_stack **a, t_stack **b)
+static void	move_nodes(t_node **a, t_node **b)
 {
-	t_stack	*cheapest_node;
+	t_node	*cheapest_node;
 
 	cheapest_node = return_cheapest(*b);
 	if (cheapest_node->above_median
@@ -92,9 +92,9 @@ static void	move_nodes(t_stack **a, t_stack **b)
  * ~For every configuration choose the "cheapest_node"
  * ~Push everything back in A in order
 */
-void	push_swap(t_stack **a, t_stack **b)
+void	push_swap(t_node **a, t_node **b)
 {
-	t_stack		*smallest;
+	t_node		*smallest;
 	int			len_a;
 
 	len_a = stack_len(*a);

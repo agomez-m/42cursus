@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:01:33 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/19 13:30:42 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:42:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static	long	ft_atol(const char *str)
 	return (num * isneg);
 }
 
-void	ft_stack_init(t_stack **a, char **argv, bool flag_argc_2)
+void	ft_stack_init(t_node **a, char **argv, bool flag_argc_2)
 {
 	long	nbr;
 	int		i;
@@ -63,7 +63,8 @@ void	ft_stack_init(t_stack **a, char **argv, bool flag_argc_2)
 #include <stdio.h>
 int main ()
 {
-	t_stack		*a;
+	t_node		*a;
+	
 	a = NULL;
 	printf("a = %p\n", a);
 	

@@ -6,15 +6,15 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:26:40 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 16:37:49 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:51:09 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rotate(t_stack **stack)
+void rotate(t_node **stack)
 {
-    t_stack *torot;
+    t_node *torot;
 
     if (*stack == NULL || stack == NULL)
         return ;
@@ -26,21 +26,21 @@ void rotate(t_stack **stack)
     torot->next->next = NULL;
 }
 
-void	ra(t_stack **a, bool checker)
+void	ra(t_node **a, bool checker)
 {
 	rotate(a);
 	if (!checker)
 		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **b, bool checker)
+void	rb(t_node **b, bool checker)
 {
 	rotate(b);
 	if (!checker)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **a, t_stack **b, bool checker)
+void	rr(t_node **a, t_node **b, bool checker)
 {
 	rotate(a);
 	rotate(b);

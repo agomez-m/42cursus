@@ -6,16 +6,16 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:55:51 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 16:46:44 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:59:01 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"  
 
-static t_stack	*find_highest(t_stack *stack)
+static t_node	*find_highest(t_node *stack)
 {
 	int			highest;
-	t_stack		*highest_node;
+	t_node		*highest_node;
 
 	if (NULL == stack)
 		return (NULL);
@@ -32,8 +32,8 @@ static t_stack	*find_highest(t_stack *stack)
 	return (highest_node);
 }
 
-void ft_three(t_stack **a){
-	t_stack	*bigger;
+void ft_three(t_node **a){
+	t_node	*bigger;
 	
 	bigger = find_highest(*a); 
 	if (*a == bigger)
@@ -45,7 +45,7 @@ void ft_three(t_stack **a){
 	
 }
 
-void	ft_five(t_stack **a, t_stack **b)
+void	ft_five(t_node **a, t_node **b)
 {
 	while (stack_len(*a) > 3)
 	{
@@ -55,7 +55,7 @@ void	ft_five(t_stack **a, t_stack **b)
 	}
 }
 
-bool	ft_sorted(t_stack *stack)
+bool	ft_sorted(t_node *stack)
 {
 	if (NULL == stack)
 		return (1);

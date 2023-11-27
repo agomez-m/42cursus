@@ -6,13 +6,13 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:55:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 16:17:54 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:12:23 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_find_last_node(t_stack *head)
+t_node	*ft_find_last_node(t_node *head)
 {
 	if (NULL == head)
 		return (NULL);
@@ -21,14 +21,14 @@ t_stack	*ft_find_last_node(t_stack *head)
 	return (head);
 }
 
-void	ft_append_node(t_stack **stack, int nbr)
+void	ft_append_node(t_node **stack, int nbr)
 {
-	t_stack	*node;
-	t_stack	*last_node;
+	t_node	*node;
+	t_node	*last_node;
 
 	if (NULL == stack)
 		return ;
-	node = malloc(sizeof(t_stack));
+	node = malloc(sizeof(t_node));
 	if (NULL == node)
 		return ;
 	node->next = NULL;
@@ -46,13 +46,10 @@ void	ft_append_node(t_stack **stack, int nbr)
 	}
 }
 
-/*
- * Find the smallest value node
-*/
-t_stack	*find_smallest(t_stack *stack)
+t_node	*find_smallest(t_node *stack)
 {
-	long			smallest;
-	t_stack	*smallest_node;
+	long		smallest;
+	t_node		*smallest_node;
 
 	if (NULL == stack)
 		return (NULL);
@@ -73,7 +70,7 @@ t_stack	*find_smallest(t_stack *stack)
  * Return the cheapest node 
  * that is already flagged
 */
-t_stack	*return_cheapest(t_stack *stack)
+t_node	*return_cheapest(t_node *stack)
 {
 	if (NULL == stack)
 		return (NULL);
@@ -86,7 +83,7 @@ t_stack	*return_cheapest(t_stack *stack)
 	return (NULL);
 }
 
-int	stack_len(t_stack *stack)
+int	stack_len(t_node *stack)
 {
 	int	count;
 
