@@ -6,24 +6,24 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:26:40 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/27 11:51:09 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:08:08 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rotate(t_node **stack)
+void	rotate(t_node **stack)
 {
-    t_node *torot;
+	t_node	*torot;
 
-    if (*stack == NULL || stack == NULL)
-        return ;
-    torot = ft_find_last_node(*stack);
-    torot->next = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
-    torot->next->prev = torot;
-    torot->next->next = NULL;
+	if (*stack == NULL || stack == NULL)
+		return ;
+	torot = ft_find_last_node(*stack);
+	torot->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	torot->next->prev = torot;
+	torot->next->next = NULL;
 }
 
 void	ra(t_node **a, bool checker)

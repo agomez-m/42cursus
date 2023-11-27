@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:58:58 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/26 20:21:33 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:13:54 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,13 @@ typedef struct s_node
 	struct s_node		*prev;
 }				t_node;
 
-char	**ft_split2(char *str, char separator);
+char			**ft_split2(char *str, char separator);
 
-//*** Handle errors-free ***
 void			ft_free_matrix(char **argv);
 void			ft_error_free(t_node **a, char **argv, bool flag_argc_2);
-int			    ft_error_repetition(t_node *a, int nbr);
+int				ft_error_repetition(t_node *a, int nbr);
 int				ft_error_syntax(char *str_nbr);
 void			ft_free_stack(t_node **stack);
-
 
 void			ft_stack_init(t_node **a, char **argv, bool flag_argc_2);
 void			init_nodes(t_node *a, t_node *b);

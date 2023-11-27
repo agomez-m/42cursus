@@ -6,13 +6,13 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:14:45 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/05 17:30:21 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:02:43 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_current_position(t_stack *stack)
+void	set_current_position(t_node *stack)
 {
 	int	i;
 	int	median;
@@ -41,11 +41,11 @@ void	set_current_position(t_stack *stack)
  *  TLDR 
  *  With this function every node in b gets its target node in a
 */
-static void	set_target_node(t_stack *a,
-							t_stack *b)
+static void	set_target_node(t_node *a,
+							t_node *b)
 {
-	t_stack	*current_a;
-	t_stack	*target_node;
+	t_node	*current_a;
+	t_node	*target_node;
 	long	best_match_index;
 
 	while (b)
@@ -76,7 +76,7 @@ static void	set_target_node(t_stack *a,
  * The price checks for the relative positions in the stack
  * for every node, setting the respective price
 */
-void	set_price(t_stack *a, t_stack *b)
+void	set_price(t_node *a, t_node *b)
 {
 	int	len_a;
 	int	len_b;
@@ -100,10 +100,10 @@ void	set_price(t_stack *a, t_stack *b)
  * Flag the cheapest node in the current
  * stacks configurations
 */
-void	set_cheapest(t_stack *b)
+void	set_cheapest(t_node *b)
 {
-	long			best_match_value;
-	t_stack	        *best_match_node;
+	long		best_match_value;
+	t_node		*best_match_node;
 
 	if (NULL == b)
 		return ;
@@ -127,7 +127,7 @@ void	set_cheapest(t_stack *b)
  * 		~Price for every configuration
  * 		~Cheapest in the current configuration
 */
-void	init_nodes(t_stack *a, t_stack *b)
+void	init_nodes(t_node *a, t_node *b)
 {
 	set_current_position(a);
 	set_current_position(b);

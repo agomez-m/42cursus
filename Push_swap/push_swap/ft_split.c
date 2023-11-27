@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 18:54:58 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/05 17:48:51 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:57:22 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include <stddef.h>
 #include <stdio.h>
 
-/*
- * Args at the command line are
- * spaced separated strings
-*/
 static int	count_words(char *str, char separator)
 {
 	int		count;
@@ -42,12 +38,6 @@ static int	count_words(char *str, char separator)
 	return (count);
 }
 
-/*
- * I exploit static variables
- * which are basically 
- * "Global private variables"
- * i can access it only via the get_next_word function
-*/
 static char	*get_next_word(char *str, char separator)
 {
 	static int	cursor = 0;
@@ -63,29 +53,16 @@ static char	*get_next_word(char *str, char separator)
 		++len;
 	next_str = malloc((size_t)len * sizeof(char) + 1);
 	if (NULL == next_str)
-		{
-			free(next_str);
-			return (NULL);
-		}
+	{
+		free(next_str);
+		return (NULL);
+	}
 	while ((str[cursor] != separator) && str[cursor])
 		next_str[i++] = str[cursor++];
 	next_str[i] = '\0';
 	return (next_str);
 }
 
-/*
- * I recreate an argv in the HEAP
- *
- * +2 because i want to allocate space
- * for the "\0" Placeholder and the final NULL
- *
- * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
- * 				 |->[p1]->"Hello"
- * 				 |->[p2]->"how"
- * 				 |->[p3]->"Are"
- * 				 |->[..]->"..""
- * 				 |->[NULL]
-*/
 char	**ft_split2(char *str, char separator)
 {
 	int		words_number;
@@ -98,32 +75,56 @@ char	**ft_split2(char *str, char separator)
 		exit(1);
 	vector_strings = malloc(sizeof(char *) * (size_t)(words_number + 2));
 	if (NULL == vector_strings)
-		{
-			free(vector_strings);
-			return (NULL);
-		}
+		return (NULL);
 	while (words_number-- >= 0)
 	{
 		if (0 == i)
 		{
 			vector_strings[i] = malloc(sizeof(char));
 			if (NULL == vector_strings[i])
-			{
-				free(vector_strings);
 				return (NULL);
-			}
 			vector_strings[i++][0] = '\0';
 			continue ;
 		}
 		vector_strings[i++] = get_next_word(str, separator);
 	}
 	vector_strings[i] = NULL;
-	printf("vector_strings[0] = %s\n", vector_strings[0]);
-	printf("vector_strings[1] = %s\n", vector_strings[1]);
-	printf("vector_strings[2] = %s\n", vector_strings[2]);
-	printf("vector_strings[3] = %s\n", vector_strings[3]);
-	printf("vector_strings[4] = %s\n", vector_strings[4]);
-	printf("vector_strings[5] = %s\n", vector_strings[5]);
-	printf("vector_strings[6] = %s\n", vector_strings[6]);
 	return (vector_strings);
 }
+/*
+ * I exploit static variables
+ * which are basically 
+ * "Global private variables"
+ * i can access it only via the get_next_word function
+
+ * I recreate an argv in the HEAP
+ *
+ * +2 because i want to allocate space
+ * for the "\0" Placeholder and the final NULL
+ *
+ * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
+ * 				 |->[p1]->"Hello"
+ * 				 |->[p2]->"how"
+ * 				 |->[p3]->"Are"
+ * 				 |->[..]->"..""
+ * 				 |->[NULL]
+*/
+
+/*
+#include <stdio.h>
+int main()
+{
+	char *str = "1 3 4 6 2";
+	char **str2;
+	int i;
+
+	i = 0;
+	str2 = ft_split2(str, ' ');
+	while (str2[i])
+	{
+		printf("%s\n", str2[i]);
+		i++;
+	}
+	printf("%s\n", str2[i]);
+	return (0);
+}*/

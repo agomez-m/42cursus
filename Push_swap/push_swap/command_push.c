@@ -6,23 +6,23 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:07:11 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/05 16:39:11 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:04:57 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push(t_stack **dest, t_stack **src)
+static void	push(t_node **dest, t_node **src)
 {
-	t_stack *topush;
+	t_node	*topush;
 
 	if (*src == NULL)
 		return ;
 	topush = *src;
-	*src = (*src)->next; /* src apunta al 2 elemento de la lista */
+	*src = (*src)->next;
 	if (*src)
-		(*src)->prev = NULL; /*eliminamos el primer nodo*/
-	topush->prev = NULL; 
+		(*src)->prev = NULL;
+	topush->prev = NULL;
 	if (dest == NULL)
 	{
 		*dest = topush;
@@ -33,17 +33,17 @@ static void push(t_stack **dest, t_stack **src)
 		topush->next = *dest;
 		topush->next->prev = topush;
 		*dest = topush;
-	}  
+	}
 }
 
-void	pa(t_stack **a, t_stack **b, bool checker)
+void	pa(t_node **a, t_node **b, bool checker)
 {
 	push(a, b);
 	if (!checker)
 		write(1, "pa\n", 3);
 }
 
-void	pb(t_stack **b, t_stack **a, bool checker)
+void	pb(t_node **b, t_node **a, bool checker)
 {
 	push(b, a);
 	if (!checker)
