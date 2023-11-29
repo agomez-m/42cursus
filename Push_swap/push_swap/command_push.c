@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:07:11 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/27 16:04:57 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:24:33 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	push(t_node **dest, t_node **src)
 	if (*src)
 		(*src)->prev = NULL;
 	topush->prev = NULL;
-	if (dest == NULL)
+	if (*dest == NULL)
 	{
 		*dest = topush;
 		topush->next = NULL;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   2ft_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 18:54:58 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/27 16:57:22 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:28:52 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*get_next_word(char *str, char separator)
 	return (next_str);
 }
 
-char	**ft_split2(char *str, char separator)
+char	**ft_split(char *str, char separator)
 {
 	int		words_number;
 	char	**vector_strings;
@@ -92,25 +92,14 @@ char	**ft_split2(char *str, char separator)
 	return (vector_strings);
 }
 /*
- * I exploit static variables
- * which are basically 
- * "Global private variables"
- * i can access it only via the get_next_word function
+Accedo a la va estatica solo desde get_next_word
+y mantiene su valor entre llamadas
 
- * I recreate an argv in the HEAP
- *
- * +2 because i want to allocate space
- * for the "\0" Placeholder and the final NULL
- *
- * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
- * 				 |->[p1]->"Hello"
- * 				 |->[p2]->"how"
- * 				 |->[p3]->"Are"
- * 				 |->[..]->"..""
- * 				 |->[NULL]
-*/
-
-/*
+recreo un argv en el heap que es
+ 
+  +2 because i want to allocate space
+  for the "\0" Placeholder and the final NULL
+ 
 #include <stdio.h>
 int main()
 {

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:58:58 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/27 16:13:54 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:19:21 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_node
 {
 	int					value;
 	int					current_position;
-	int					final_index;
 	int					push_price;
 	bool				above_median;
 	bool				cheapest;
@@ -31,7 +30,7 @@ typedef struct s_node
 	struct s_node		*prev;
 }				t_node;
 
-char			**ft_split2(char *str, char separator);
+char			**ft_split(char *str, char separator);
 
 void			ft_free_matrix(char **argv);
 void			ft_error_free(t_node **a, char **argv, bool flag_argc_2);

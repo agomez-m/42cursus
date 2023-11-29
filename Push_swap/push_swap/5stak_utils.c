@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stak_utils.c                                       :+:      :+:    :+:   */
+/*   5stak_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:55:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/26 20:12:23 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:47:55 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,6 @@ t_node	*find_smallest(t_node *stack)
 	return (smallest_node);
 }
 
-/*
- * Return the cheapest node 
- * that is already flagged
-*/
 t_node	*return_cheapest(t_node *stack)
 {
 	if (NULL == stack)

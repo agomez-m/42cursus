@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:23:04 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/26 20:10:10 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:01:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ void	ft_free_matrix(char **argv)
 		free(argv[i++]);
 	free(argv -1);
 }
-
-/*-1 se hace para asegurar que todos los elementos de la matriz 
-argv se liberen , incluyendo el último elemento, que es NULL.
- Si comenzáramos desde 0, no liberaríamos NULL, ya que el bucle while se 
- detendría cuando llegara a NULL.*/
 
 void	ft_free_stack(t_node **stack)
 {
@@ -85,3 +80,8 @@ int		ft_error_repetition(t_node *a, int nbr)
 	}
 	return (0);
 }
+
+/*-1 se hace para asegurar que todos los elementos de la matriz 
+argv se liberen , incluyendo el último elemento, que es NULL.
+ Si comenzáramos desde 0, no liberaríamos NULL, ya que el bucle while se 
+ detendría cuando llegara a NULL.*/

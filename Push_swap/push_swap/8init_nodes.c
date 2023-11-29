@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inicial.c                                          :+:      :+:    :+:   */
+/*   8init_nodes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:14:45 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/27 16:02:43 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:15:04 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ void	set_current_position(t_node *stack)
 	}
 }
 
-/*
- *	Best match is..
- *   | "The Smallest-bigger value" |
- *
- *  if no node is Bigger, best_match is the Smallest node.
- *  TLDR 
- *  With this function every node in b gets its target node in a
-*/
 static void	set_target_node(t_node *a,
 							t_node *b)
 {
@@ -70,12 +62,6 @@ static void	set_target_node(t_node *a,
 	}
 }
 
-/*
- * Set the prices to push the node
- * from b -> a
- * The price checks for the relative positions in the stack
- * for every node, setting the respective price
-*/
 void	set_price(t_node *a, t_node *b)
 {
 	int	len_a;
@@ -96,10 +82,6 @@ void	set_price(t_node *a, t_node *b)
 	}
 }
 
-/*
- * Flag the cheapest node in the current
- * stacks configurations
-*/
 void	set_cheapest(t_node *b)
 {
 	long		best_match_value;
@@ -120,13 +102,6 @@ void	set_cheapest(t_node *b)
 	best_match_node->cheapest = true;
 }
 
-/*
- * All the necessary values to make the push
- * 		~Relative Positions
- * 		~Target node, the b node to make emerge
- * 		~Price for every configuration
- * 		~Cheapest in the current configuration
-*/
 void	init_nodes(t_node *a, t_node *b)
 {
 	set_current_position(a);
@@ -135,3 +110,15 @@ void	init_nodes(t_node *a, t_node *b)
 	set_price(a, b);
 	set_cheapest(b);
 }
+/*
+ * All the necessary values to make the push
+ * 		~Relative Positions
+ * 		~Target node, the b node to make emerge
+ * 		~Price for every configuration
+ * 		~Cheapest in the current configuration
+*/
+/*
+ With set_target_node every node in b gets its target node in a
+ Best match is "The Smallest-bigger value" 
+ if no node is Bigger, best_match is the Smallest node.
+*/

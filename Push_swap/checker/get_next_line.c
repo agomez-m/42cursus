@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/23 18:16:49 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:21:57 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	create_list(tc_list **list, int fd)
 	int		char_read;
 	char	*buf;
 
-	while (!found_newline(*list))
+	while (!found_new_line(*list))
 	{
 		buf = malloc(BUFFER_SIZE + 1);
 		if (NULL == buf)
@@ -109,7 +109,7 @@ char	*get_next_line(int fd)
 	polish_list (&list);
 	return (next_line);
 }
-
+/*
 void leaks()
 {
 	system("leaks -q a.out");
@@ -136,3 +136,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/
