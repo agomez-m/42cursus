@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:02:03 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/30 19:18:21 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/01 15:01:24 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ int	main(int argc, char **argv)
 	
 	a = NULL;
 	b = NULL;
-	len = stack_len(a);
 	if (1 == argc)
 		return (0);
 	else if (2 == argc)
 		argv = ft_split(argv[1], 32);
 	ft_stack_init(&a, argv + 1, 2 == argc);
+	len = stack_len(a);
 	next_line = get_next_line(STDIN_FILENO);
 	while (next_line)
 	{
