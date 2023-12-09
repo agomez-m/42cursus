@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:02:03 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/01 14:58:18 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/09 12:26:02 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	t_node	*b;
 	char	*next_line;
 	int		len;
-	
+
 	a = NULL;
 	b = NULL;
 	if (1 == argc)
@@ -78,12 +78,10 @@ int	main(int argc, char **argv)
 	ft_stack_init(&a, argv + 1, 2 == argc);
 	len = stack_len(a);
 	next_line = get_next_line(STDIN_FILENO);
-	while (next_line)
+	while (next_line && ft_strcmp(next_line, "\n"))
 	{
 		parse_command(&a, &b, next_line);
 		next_line = get_next_line(STDIN_FILENO);
-		if (!ft_strcmp(next_line, "\n"))
-			break ;
 	}
 	if (ft_sorted(a) && len == stack_len(a))
 		write(1, "OK\n", 3);

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:55:51 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/11/28 13:03:28 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:58:41 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,17 @@ static t_node	*find_highest(t_node *stack)
 	return (highest_node);
 }
 
-void ft_three(t_node **a)
+void	ft_three(t_node **a)
 {
 	t_node	*bigger;
-	
-	bigger = find_highest(*a); 
+
+	bigger = find_highest(*a);
 	if (*a == bigger)
 		ra(a, false);
 	else if ((*a)->next == bigger)
 		rra(a, false);
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);
-	
 }
 
 void	ft_five(t_node **a, t_node **b)
