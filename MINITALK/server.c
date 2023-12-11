@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:30:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 20:47:21 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/11 23:46:21 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,24 @@ int	main(void)
 		sleep(1);
 	return (0);
 }
+
+/*
+susr.sa_flags = SA_SIGINFO | SA_RESTART | SA_NODEFER;
+- utiliza siginfo_t para obtener información adicional
+ sobre la señal, como el ID del proceso que envió 
+ la señal (si_pid) y el ID de usuario (si_uid).
+-  si se interrumpe la llamada sleep, 
+se reiniciará automáticamente 
+gracias al uso de SA_RESTART.
+- SA_NODEFER permite que las señales se entregue nuevamente 
+mientras se están manejando en el manejador 
+de señales. Esto evita el bloqueo temporal de las señales.
+
+sigemptyset(&susr.sa_mask);
+- inicializa el conjunto de señales bloqueadas
+ a vacío, lo que significa que no se bloqueará ninguna señal.
+- Esto es importante porque SA_NODEFER no bloquea
+ las señales que se están manejando,
+ por lo que si se bloquean otras señales,
+  podrían interrumpir el manejador de señales.
+*/
