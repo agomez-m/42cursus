@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:30:13 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 20:07:53 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/12 00:10:06 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 {
 	pid_t	pid;
 
-	if (argc != 3 || !ft_strlen(argv[2]))
+	if (argc != 3)
 	{
 		write(1, "Usage : ./client <pid> <string to send>\n", 40);
 		exit(EXIT_FAILURE);
@@ -73,12 +73,6 @@ int	main(int argc, char **argv)
 	signal(SIGUSR1, &sig_server);
 	signal(SIGUSR2, &sig_server);
 	pid = ft_atoi(argv[1]);
-	if (!pid)
-	{
-		write(1, argv[1], ft_strlen(argv[1]));
-		write(1, " is an invalid pid\n", 19);
-		exit(EXIT_FAILURE);
-	}
 	send_str(argv[2], pid);
 	while (1)
 		sleep(1);

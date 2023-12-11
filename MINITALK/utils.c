@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:22:57 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 20:50:47 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/12 00:09:04 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res * sign);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 
 void	ft_putchar_fd(char c, int fd)
