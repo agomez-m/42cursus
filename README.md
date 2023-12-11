@@ -24,8 +24,12 @@ En este repositorio encontrarás una colección de proyectos realizados como par
    - Description: Función que ordena una serie de enteros
    - inspired code YTB "Oceano" 
 
-6. []()
-- 
+6. [MINITALK](https://github.com/agomez-m/42cursus/tree/main/MINITALK)
+   - Descripción: programa de comunicación cliente-servidor con señales UNIX    
+
+7. []()
+-
+
 ## Objetivos
 
 El objetivo de este repositorio es mostrar mi progreso y habilidades en programación y desarrollo de software. Cada proyecto representa un desafío único y una oportunidad de aprender nuevas habilidades y conceptos.
