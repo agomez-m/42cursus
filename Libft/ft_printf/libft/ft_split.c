@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:36:02 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 17:47:57 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:14:01 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_split(char const *s, char c)
 	j = -1;
 	strs = (char **)malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
 	if (!strs)
-		return (0);
+		return (NULL);
 	while (++j < ft_count_word(s, c))
 	{
 		while (s[i] == c)
@@ -74,10 +74,32 @@ char	**ft_split(char const *s, char c)
 		if (!(strs[j]))
 		{
 			ft_free(strs, j);
-			return (0);
+			return (NULL);
 		}
 		i += size;
 	}
 	strs[j] = 0;
 	return (strs);
 }
+/* reserva memoria para una matriz de cadenas y la copia en la nueva memoria 
+Reserva (utilizando malloc(3)) un array de strings
+resultante de separar la string ’s’ en substrings
+utilizando el caracter ’c’ como delimitador. El
+array debe terminar con un puntero NULL.*/
+/*
+#include <stdio.h>
+int main()
+{
+	char *str = "Hola que tal estas";
+	char **str2;
+	int i;
+
+	i = 0;
+	str2 = ft_split(str, ' ');
+	while (str2[i])
+	{
+		printf("%s\n", str2[i]);
+		i++;
+	}
+	return (0);
+}*/

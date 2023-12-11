@@ -1,5 +1,6 @@
-a.out
+*.o
+*.swp
+*.out
+server
+client
 .DS_Store
-Libft/.DS_Store
-ft_printf/.DS_Store
-ft_printf/ft_printfLIBFT/.DS_Store

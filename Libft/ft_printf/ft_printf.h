@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dataserver.h                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 17:14:32 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 20:46:14 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/25 13:03:10 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/25 18:22:38 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATASERVER_H
-# define DATASERVER_H
-# include <signal.h>
-# include <stdlib.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
 # include <unistd.h>
+# include <stdarg.h>
+# include "libft/libft.h"
 
-typedef struct s_server_data
-{
-	int				i;
-	pid_t			client_pid;
-	unsigned char	c;
-}				t_server_data;
-
-size_t	ft_strlen(const char *s);
-int		ft_atoi(const char *str);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putchar_fd(char c, int fd);
+int		ft_print_char(int c);
+int		ft_print_str(char *str);
+int		ft_print_digit(long n, int base);
+int		ft_print_digitx(long n, int base);
+int		ft_print_u(unsigned int n);
+int		ft_putpoi(unsigned long long ptr);
+int		ft_printf(const char *format, ...);
 
 #endif

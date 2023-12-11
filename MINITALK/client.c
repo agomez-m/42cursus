@@ -6,64 +6,80 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:30:13 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 17:18:28 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:07:53 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dataserver.h"
 
-static void	sigcounter(int sig)
-{
-	static int	received = 0;
+int	g_bit_control;
 
-	if (sig == SIGUSR1)
-		++received;
-	else
+void	send_char(char c, pid_t pid)
+{
+	int	bit;
+
+	bit = __CHAR_BIT__ * sizeof(c) - 1;
+	while (bit >= 0)
 	{
-		ft_putnbr_fd(received, 1);
-		ft_putchar_fd('\n', 1);
-		exit(0);
+		if (kill(pid, 0) < 0)
+		{
+			write(1, "ERROR : cant send sig to pid ", 29);
+			exit(EXIT_FAILURE);
+		}
+		g_bit_control = 0;
+		if (c & (1 << bit))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		bit--;
+		while (g_bit_control != 1)
+			usleep(10);
 	}
 }
 
-static void	my_kill(int pid, char *str)
+void	send_str(char *str, pid_t pid)
 {
-	int		i;
-	char	c;
+	int	cur;
 
-	while (*str)
+	cur = 0;
+	while (str[cur])
 	{
-		i = 8;
-		c = *str++;
-		while (i--)
-		{
-			if (c >> i & 1)
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			usleep(100);
-		}
+		send_char(str[cur], pid);
+		cur++;
 	}
-	i = 8;
-	while (i--)
+	send_char(0, pid);
+}
+
+void	sig_server(int sig)
+{
+	if (sig == SIGUSR1)
+		g_bit_control = 1;
+	else if (sig == SIGUSR2)
 	{
-		kill(pid, SIGUSR1);
-		usleep(100);
+		write(1, "Message received !\n", 20);
+		exit(EXIT_SUCCESS);
 	}
 }
 
 int	main(int argc, char **argv)
 {
+	pid_t	pid;
+
 	if (argc != 3 || !ft_strlen(argv[2]))
-		return (1);
-	ft_putstr_fd("Client Sent    : ", 1);
-	ft_putnbr_fd(ft_strlen(argv[2]), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd("Server Received: ", 1);
-	signal(SIGUSR1, sigcounter);
-	signal(SIGUSR2, sigcounter);
-	my_kill(ft_atoi(argv[1]), argv[2]);
+	{
+		write(1, "Usage : ./client <pid> <string to send>\n", 40);
+		exit(EXIT_FAILURE);
+	}
+	signal(SIGUSR1, &sig_server);
+	signal(SIGUSR2, &sig_server);
+	pid = ft_atoi(argv[1]);
+	if (!pid)
+	{
+		write(1, argv[1], ft_strlen(argv[1]));
+		write(1, " is an invalid pid\n", 19);
+		exit(EXIT_FAILURE);
+	}
+	send_str(argv[2], pid);
 	while (1)
-		pause();
-	return (0);
+		sleep(1);
 }

@@ -6,50 +6,60 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:30:18 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 17:19:45 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:47:21 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dataserver.h"
 
-static void	action(int sig, siginfo_t *info, void *context)
+void	init_sig(int sig, void (*handler)(int, siginfo_t *, void *))
 {
-	static t_server_data	server_data = {0};
+	struct sigaction	susr;
+
+	susr.sa_sigaction = handler;
+	susr.sa_flags = SA_SIGINFO | SA_RESTART | SA_NODEFER;
+	sigemptyset(&susr.sa_mask);
+	if (sig == SIGUSR1)
+		sigaction(SIGUSR1, &susr, 0);
+	else if (sig == SIGUSR2)
+		sigaction(SIGUSR2, &susr, 0);
+}
+
+void	user_signal(int sig, siginfo_t *info, void *context)
+{
+	static char	c = 0;
+	static int	bit = -1;
 
 	(void)context;
-	if (!server_data.client_pid)
-		server_data.client_pid = info->si_pid;
-	server_data.c |= (sig == SIGUSR2);
-	if (++server_data.i == 8)
+	if (kill(info->si_pid, 0) < 0)
 	{
-		server_data.i = 0;
-		if (!server_data.c)
-		{
-			kill(server_data.client_pid, SIGUSR2);
-			server_data.client_pid = 0;
-			write(1, "\n", 1);
-			return ;
-		}
-		ft_putchar_fd(server_data.c, 1);
-		server_data.c = 0;
-		kill(server_data.client_pid, SIGUSR1);
+		write(1, "ERROR : cant send sig to pid ", 29);
+		exit(EXIT_FAILURE);
 	}
-	else
-		server_data.c <<= 1;
+	if (bit < 0 && !c)
+		write(1, "\nClient say : ", 14);
+	if (bit < 0)
+		bit = __CHAR_BIT__ * sizeof(c) - 1;
+	if (sig == SIGUSR1)
+		c |= 1 << bit;
+	else if (sig == SIGUSR2)
+		c &= ~(1 << bit);
+	if (!bit && c)
+		ft_putchar_fd(c, 1);
+	else if (!bit && !c)
+		kill(info->si_pid, SIGUSR2);
+	bit--;
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
 {
-	struct sigaction	s_sigaction;
-
-	ft_putstr_fd("Server PID: ", 1);
+	init_sig(SIGUSR1, &user_signal);
+	init_sig(SIGUSR2, &user_signal);
+	write(1, "Server PID: ", 12);
 	ft_putnbr_fd(getpid(), 1);
-	ft_putchar_fd('\n', 1);
-	s_sigaction.sa_sigaction = action;
-	s_sigaction.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &s_sigaction, 0);
-	sigaction(SIGUSR2, &s_sigaction, 0);
+	write(1, "\n", 1);
 	while (1)
-		pause();
+		sleep(1);
 	return (0);
 }

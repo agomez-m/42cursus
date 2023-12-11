@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 14:18:49 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/11 18:19:43 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/09/25 12:59:02 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/09/26 17:05:08 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_print_char(int c)
 {
-	size_t	dest_len;
-	size_t	src_len;
-
-	src_len = ft_strlen(src);
-	if (!dst && 0 == dstsize)
-		return (src_len);
-	dest_len = ft_strlen(dst);
-	if (dest_len >= dstsize)
-		return (src_len + dstsize);
-	else
-		dstsize -= dest_len;
-	ft_strlcpy(dst + dest_len, src, dstsize);
-	return (dest_len + src_len);
+	ft_putchar_fd(c, 1);
+	return (1);
 }
