@@ -8,11 +8,11 @@ En este repositorio encontrarás una colección de proyectos realizados como par
 
 1. [ft_printf](https://github.com/agomez-m/42cursus/tree/main/ft_printf)
    - Descripción: Implementación de la función printf en C.
-   - inspired code YTB "Oceano"  -> minifprint
+   - inspired code YTB "Oceano minifprint"
 
 2. [get_next_line](https://github.com/agomez-m/42cursus/tree/main/getnextline)
    - Descripción: Implementación de una función para leer líneas de un archivo o entrada estándar.
-   - inspired code YTB "Oceano"
+   - inspired code YTB "Oceano gnl"
 
 3. [Libft](https://github.com/agomez-m/42cursus/tree/main/Libft)
    - Descripción: Creación de una biblioteca de funciones en C.
@@ -22,11 +22,12 @@ En este repositorio encontrarás una colección de proyectos realizados como par
 
 5. [Push_swap](https://github.com/agomez-m/42cursus/tree/main/Push_swap)
    - Description: Función que ordena una serie de enteros
-   - inspired code YTB "Oceano" 
+   - inspired code YTB "Oceano Pushswap" 
 
 6. [MiniTalk](https://github.com/agomez-m/42cursus/tree/main/MINITALK)
    - Descripción: programa de comunicación de caracteres cliente-servidor con 2 señales (1 y 0)
    - Inspired code:
+   -    https://www.youtube.com/playlist?list=PL9LZM-hWdUvsqXxqghK5H1fF07nCV9MyF
    -    https://github.com/hanshazairi/42-minitalk
    -    https://git.chevro.fr/42-cestoliv/minitalk/-/tree/nosleep
 
