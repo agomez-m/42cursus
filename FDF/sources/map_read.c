@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 16:36:06 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/09/13 11:30:56 by agomez-m         ###   ########.fr       */
+/*   Created: 2023/12/13 17:14:43 by agomez-m          #+#    #+#             */
+/*   Updated: 2023/12/13 18:49:23 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-int	ft_toupper(int c)
+t_dot	**read_map(char *file)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
-}
+	t_dot	**matrix;
+	int		fd;
+	char	*line;
+	int		y;
 
-/* convierte una letra minuscula en mayuscula */
+	matrix = memory_allocete(file);
+	fd = open(file, O_RDONLY, 0);
+	if (fd <= 0)
+		ft_error("file does not exist");
+	y = 0;
+	while (get_next_line(fd, &line) > 0)
+	{
+		get_dots_from_line(line, matrix, y);
+		y++;
+	}
+	free(line);
+	matrix[y] = NULL;
+	close(fd);
+	return (matrix);
+}

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:15:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/10/02 13:27:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:54:30 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*get_next_line(int fd)
 	polish_list (&list[fd]);
 	return (next_line);
 }
-
+/*
 #include <stdio.h>
 int	main(void)
 {
@@ -142,3 +142,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/

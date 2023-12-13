@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/13 18:25:37 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:54:54 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*get_next_line(int fd)
 	polish_list (&list);
 	return (next_line);
 }
-
+/*
 void leaks()
 {
 	system("leaks -q a.out");
@@ -135,3 +135,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/
