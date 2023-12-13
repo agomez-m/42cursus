@@ -24,10 +24,13 @@ En este repositorio encontrarás una colección de proyectos realizados como par
    - Description: Función que ordena una serie de enteros
    - inspired code YTB "Oceano" 
 
-6. [MINITALK](https://github.com/agomez-m/42cursus/tree/main/MINITALK)
-   - Descripción: programa de comunicación cliente-servidor con señales UNIX    
+6. [MiniTalk](https://github.com/agomez-m/42cursus/tree/main/MINITALK)
+   - Descripción: programa de comunicación de caracteres cliente-servidor con 2 señales (1 y 0)
+   - Inspired code:
+   -    https://github.com/hanshazairi/42-minitalk
+   -    https://git.chevro.fr/42-cestoliv/minitalk/-/tree/nosleep
 
-7. []()
+7. [FDF]()
 -
 
 ## Objetivos
