@@ -6,19 +6,16 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:16:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/13 18:44:31 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:41:08 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../LIBFTCOM/ft_printf.h"
-# include "../LIBFTCOM/get_next_line.h"
-# include "../LIBFTCOM/libft/libft.h"
-# include "../minilibx_macos/mlx.h"
+# include "../LIBFTCOM/libft.h"
 # include <math.h>
-# define PRM matrix[0][0]
+# include "../minilibx_macos/mlx.h"
 
 typedef struct s_dot
 {
@@ -40,14 +37,15 @@ typedef struct s_dot
 	void		*win_ptr;
 }				t_dot;
 
-t_dot			**map_read(char *file_name);
-
-void			isometric(t_dot *dot, double angle);
-void			draw(t_dot **matrix);
+t_dot			**read_map(char *file);
+void			ft_error(char *msg);
+int				ft_wordcounter(char const *str, char c);
+void			draw_lines(t_dot **matrix);
+void			display_leyend(t_dot matrix);
+int				max(int a, int b);
+int				min(int a, int b);
 int				deal_key(int key, t_dot **matrix);
 void			set_param(t_dot *a, t_dot *b, t_dot *param);
-void			print_menu(t_dot param);
-void			ft_error(char *msg);
 void			new_window(int key, t_dot **matrix);
 
 #endif
