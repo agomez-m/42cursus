@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:37:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 21:45:32 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:14:21 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ int	main(int argc, char **argv)
 	t_dot	**matrix;
 
 	if (argc != 2)
-		ft_error("To display a map: ./fdf map.fdf");
+		ft_error("To display a map: ./fdf MAP.fdf");
 	matrix = read_map(*++argv);
 	param_default(&matrix[0][0]);
 	draw_lines(matrix);
 	mlx_key_hook(matrix[0][0].win_ptr, deal_key, matrix);
+	mlx_hook(matrix[0][0].win_ptr, 17, 1L << 17, deal_key, matrix);
 	mlx_loop(matrix[0][0].mlx_ptr);
 }
 

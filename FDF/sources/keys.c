@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:15:44 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 21:41:30 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:13:49 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ int	deal_key(int key, t_dot **matrix)
 	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
 		new_window(key, matrix);
 	if (key == '5')
+	{
+		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
+		free(matrix);
+		exit(0);
+	}
+	if (key == 17)
 	{
 		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
 		free(matrix);

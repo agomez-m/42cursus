@@ -6,7 +6,7 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:32:39 by agomez-m          #+#    #+#              #
-#    Updated: 2023/12/14 20:23:40 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/12/15 19:07:11 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,6 @@ fclean: clean
 re: fclean all
 
 norm:
-			@norminette $(SRC) | grep -v Norme -B1 || true
+	@norminette $(SRC) | grep -v Norme -B1 || true
 
 .PHONY: all clean fclean re

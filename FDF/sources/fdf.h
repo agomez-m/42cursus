@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:16:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 21:41:08 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:12:21 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../LIBFTCOM/libft.h"
 # include <math.h>
 # include "../minilibx_macos/mlx.h"
+
 
 typedef struct s_dot
 {
