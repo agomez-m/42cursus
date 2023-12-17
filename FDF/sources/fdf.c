@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:37:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/15 19:14:21 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:52:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	param_default(t_dot *param)
 {
-	param->scale = 20;
+	param->scale = 25;
 	param->z_scale = 1;
 	param->is_isometric = 1;
-	param->angle = 0.523599;
+	param->angle = 0.823599;
 	param->win_x = 1000;
 	param->win_y = 500;
-	param->shift_x = param->win_x / 3;
-	param->shift_y = param->win_y / 3;
+	param->shift_x = 400;
+	param->shift_y = 150;
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = \
 	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF by AG");

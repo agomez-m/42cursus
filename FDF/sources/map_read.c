@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:14:43 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 20:02:32 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:39:43 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_dot	**alloc_map_size(char *file)
 
 	fd = open(file, O_RDONLY, 0);
 	if ((fd) <= 0)
-		ft_error("file does not exist");
+		ft_error("file read error");
 	get_next_line(fd, &line);
 	cols = ft_wordcounter(line, ' ');
 	free(line);
