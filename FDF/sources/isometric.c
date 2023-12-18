@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:03:14 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 12:56:08 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:58:26 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ void	set_param(t_dot *a, t_dot *b, t_dot *param)
 
 /* 
 default angle: 0.523599 
-make the figure 3d (isometric stile)
+isometric: 1 - figura en 3d, 0 - figura en 2d
+shift_x and shift_y: mueven la figura en el eje x e y
+scale: escala de la figura
+z_scale: escala del eje z
+
 */

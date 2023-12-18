@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:15:44 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/15 19:13:49 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/19 00:32:13 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	do_key(int key, t_dot **matrix)
 	else if (key == 49 || key == 87 || key == 23)
 		matrix[0][0].is_isometric = !matrix[0][0].is_isometric;
 	else if (key == 86 || key == 21)
-		matrix[0][0].angle += 0.05;
+		matrix[0][0].angle += 0.5;
 	else if (key == 88 || key == 22)
-		matrix[0][0].angle -= 0.05;
+		matrix[0][0].angle -= 0.5;
 }
 
 int	deal_key(int key, t_dot **matrix)
@@ -58,13 +58,7 @@ int	deal_key(int key, t_dot **matrix)
 	}
 	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
 		new_window(key, matrix);
-	if (key == '5')
-	{
-		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
-		free(matrix);
-		exit(0);
-	}
-	if (key == 17)
+	if (key == 53)
 	{
 		mlx_destroy_window(matrix[0][0].mlx_ptr, matrix[0][0].win_ptr);
 		free(matrix);
@@ -72,3 +66,40 @@ int	deal_key(int key, t_dot **matrix)
 	}
 	return (0);
 }
+
+/*
+Modificar tamaño de pantalla
+key == 6        Z	Ancho -
+key == 7        X	Ancho +
+key == 0        A	Alto -
+key == 1        S	Alto +
+key == 3        F	Full screen
+
+key == 53	   ESC	exit
+
+key == 24       +	Zoom +
+key == 69       NUMPAD +	Zoom +
+Key == 27       -	Zoom -
+key == 78       NUMPAD -	Zoom -
+
+key == 91       8 NUMPAD	Z-scale +
+key == 28       8(	 Z-scale +
+key == 84       2 NUMPAD	 Z-scale -
+key == 19       2@	 Z-scale -
+
+key == '~'      up	
+key == '}'      down
+key == '{'      left	
+key == '|'      right
+
+key == 49       Space	isometric	
+key == 87       5	isometric
+key == 23       5 NUMPAD	isometric
+
+key == 86       4	rotation
+key == 21       4 NUMPAD	rotation
+key == 88       6	rotation
+key == 22       6 NUMPAD	rotation
+key == 17       ESC	exit
+
+*/

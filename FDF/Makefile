@@ -6,7 +6,7 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/13 18:39:23 by agomez-m          #+#    #+#              #
-#    Updated: 2023/12/18 18:34:01 by agomez-m         ###   ########.fr        #
+#    Updated: 2023/12/18 22:15:07 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ FLAGS=-Werror -Wextra -Wall
 NAME=fdf
 SRC=sources/*.c
 INCLUDES=LIBFTCOM/libftcom.a minilibx_macos/libmlx.a
+
 
 all:
 	@make -C LIBFTCOM/ all

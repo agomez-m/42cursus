@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:48:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/18 12:07:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 23:16:31 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	display_leyend(t_dot matrix)
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 100, 0xCCFF00, menu);
 	menu = "press 'a' 's' / 'z' 'x' to change screen size";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 115, 0xCCFF00, menu);
+	menu = "press ESC to exit correctly";
+	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 130, 0xCCFF00, menu);
 }
 
 int	max(int a, int b)

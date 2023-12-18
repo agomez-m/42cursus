@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:43:36 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 21:43:04 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 23:05:44 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	new_window(int key, t_dot **matrix)
 	matrix[0][0].mlx_ptr = mlx_init();
 	matrix[0][0].win_ptr = \
 		mlx_new_window(matrix[0][0].mlx_ptr, \
-		matrix[0][0].win_x, matrix[0][0].win_y, "FDF");
+		matrix[0][0].win_x, matrix[0][0].win_y, "FDF by AG");
 	matrix[0][0].shift_x = matrix[0][0].win_x / 3;
 	matrix[0][0].shift_y = matrix[0][0].win_y / 3;
 	draw_lines(matrix);
