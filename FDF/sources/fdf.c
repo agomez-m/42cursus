@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:37:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/17 11:52:05 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:59:57 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	param_default(t_dot *param)
 {
-	param->scale = 25;
+	param->scale = 20;
 	param->z_scale = 1;
 	param->is_isometric = 1;
-	param->angle = 0.823599;
+	param->angle = 0.523599;
 	param->win_x = 1000;
 	param->win_y = 500;
 	param->shift_x = 400;

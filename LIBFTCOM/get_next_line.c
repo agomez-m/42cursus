@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 20:26:35 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:30:54 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_arr	*newlist(const int fd)
 	t_arr	*new;
 
 	new = (t_arr *)malloc(sizeof(t_arr));
-	if (!(new))
+	if (!new)
 		return (NULL);
 	new->fd = fd;
 	new->rest = ft_strnew(BUFF_SIZE);
@@ -30,14 +30,14 @@ static char	*checkrest(char **p_n, char *rest)
 	char	*str;
 
 	*p_n = ft_strchr2(rest, '\n');
-	if ((p_n) != NULL)
+	if (*p_n != NULL)
 	{
 		str = ft_strsub(rest, 0, *p_n - rest);
 		ft_strcpy(rest, ++(*p_n));
 	}
 	else
 	{
-		str = ft_strnew(ft_strlen2(rest) + 1);
+		str = ft_strnew(ft_strlen(rest) + 1);
 		ft_strcat(str, rest);
 		ft_strclr(rest);
 	}
@@ -46,31 +46,29 @@ static char	*checkrest(char **p_n, char *rest)
 
 static int	get_line(const int fd, char **line, char *rest)
 {
-	char			buf[BUFF_SIZE + 1];
-	char			*p_n;
-	char			*tmp;
-	int				rd;
+	t_gl	gl;
 
-	p_n = NULL;
-	rd = 1;
-	*line = checkrest(&p_n, rest);
-	(rd = read(fd, buf, BUFF_SIZE));
-	while (p_n == 0 && (rd != 0))
+	gl.p_n = NULL;
+	*line = checkrest(&gl.p_n, rest);
+	while (gl.p_n == 0)
 	{
-		buf[rd] = '\0';
-		p_n = ft_strchr(buf, '\n');
-		if ((p_n) != NULL)
+		gl.rd = read(fd, gl.buf, BUFF_SIZE);
+		if (gl.rd == 0)
+			break ;
+		gl.buf[gl.rd] = '\0';
+		gl.p_n = ft_strchr(gl.buf, '\n');
+		if (gl.p_n != NULL)
 		{
-			ft_strcpy(rest, ++p_n);
-			ft_strclr(--p_n);
+			ft_strcpy(rest, ++gl.p_n);
+			ft_strclr(--gl.p_n);
 		}
-		tmp = *line;
-		(*line = ft_strjoin2(tmp, buf));
-		if (!line || rd < 0)
+		gl.tmp = *line;
+		*line = ft_strjoin(gl.tmp, gl.buf);
+		if (!*line || gl.rd < 0)
 			return (-1);
-		ft_strdel(&tmp);
+		ft_strdel(&gl.tmp);
 	}
-	return (ft_strlen2(*line) || ft_strlen2(rest) || rd);
+	return (ft_strlen(*line) || ft_strlen(rest) || gl.rd);
 }
 
 int	get_next_line(const int fd, char **line)

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:32:33 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 15:35:50 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:22:54 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # define BUFF_SIZE 10
-# define MAX(A, B) (A > B ? A : B)
-# define MIN(A, B) (A > B ? B : A)
 
 typedef struct s_list1
 {
@@ -33,6 +31,14 @@ typedef struct s_arr
 	char			*rest;
 	struct s_arr	*next;
 }				t_arr;
+
+typedef struct s_gl
+{
+	char			buf[BUFF_SIZE + 1];
+	char			*p_n;
+	char			*tmp;
+	int				rd;
+}				t_gl;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -89,8 +95,6 @@ int		ft_print_u(unsigned int n);
 int		ft_putpoi(unsigned long long ptr);
 int		ft_printf(const char *format, ...);
 int		get_next_line(const int fd, char **line);
-
-
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin2(char const *s1, char const *s2);

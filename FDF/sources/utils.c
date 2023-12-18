@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:48:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/15 19:38:33 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:07:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,22 @@ void	display_leyend(t_dot matrix)
 {
 	char	*menu;
 
-	menu = "Welcome to the program FDF by AGOMEZ-M";
+	menu = "Welcome to FDF by AGOMEZ-M";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 10, 0xFF00AA, menu);
-	menu = "↑, ↓, ←, →: move picture";
+	menu = "ARROWS: move picture";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 25, 0xCCFF00, menu);
-	menu = " +, -: zoom";
+	menu = "press + - to zoom";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 40, 0xCCFF00, menu);
-	menu = "number 5, SPACE: 3d/2d mode";
+	menu = "number 5 and SPACE: 3d/2d mode";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 55, 0xCCFF00, menu);
-	menu = "numbers 4, 6: rotation";
+	menu = "numbers 4 and 6: rotation";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 70, 0xCCFF00, menu);
-	menu = "numbers 8, 2: z-scale";
+	menu = "numbers 8 and 2: z-scale";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 85, 0xCCFF00, menu);
-	menu = "numbers f: full screen mode";
+	menu = "press 'f' to full screen mode";
 	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 100, 0xCCFF00, menu);
+	menu = "press 'a' 's' / 'z' 'x' to change screen size";
+	mlx_string_put(matrix.mlx_ptr, matrix.win_ptr, 600, 115, 0xCCFF00, menu);
 }
 
 int	max(int a, int b)

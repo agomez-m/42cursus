@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:32:33 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/14 22:45:49 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:22:54 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ typedef struct s_arr
 	struct s_arr	*next;
 }				t_arr;
 
-typedef struct s_tail
+typedef struct s_gl
 {
-	int			fd;
-	char		*hist;
-	struct tail	*next;
-}				t_tail;
+	char			buf[BUFF_SIZE + 1];
+	char			*p_n;
+	char			*tmp;
+	int				rd;
+}				t_gl;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

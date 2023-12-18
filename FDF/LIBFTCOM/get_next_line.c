@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2023/12/15 18:52:23 by agomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:30:54 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,29 @@ static char	*checkrest(char **p_n, char *rest)
 
 static int	get_line(const int fd, char **line, char *rest)
 {
-	char			buf[BUFF_SIZE + 1];
-	char			*p_n;
-	char			*tmp;
-	int				rd;
+	t_gl	gl;
 
-	p_n = NULL;
-	*line = checkrest(&p_n, rest);
-	while (p_n == 0)
+	gl.p_n = NULL;
+	*line = checkrest(&gl.p_n, rest);
+	while (gl.p_n == 0)
 	{
-		rd = read(fd, buf, BUFF_SIZE);
-		if (rd == 0)
+		gl.rd = read(fd, gl.buf, BUFF_SIZE);
+		if (gl.rd == 0)
 			break ;
-		buf[rd] = '\0';
-		p_n = ft_strchr(buf, '\n');
-		if (p_n != NULL)
+		gl.buf[gl.rd] = '\0';
+		gl.p_n = ft_strchr(gl.buf, '\n');
+		if (gl.p_n != NULL)
 		{
-			ft_strcpy(rest, ++p_n);
-			ft_strclr(--p_n);
+			ft_strcpy(rest, ++gl.p_n);
+			ft_strclr(--gl.p_n);
 		}
-		tmp = *line;
-		*line = ft_strjoin(tmp, buf);
-		if (!*line || rd < 0)
+		gl.tmp = *line;
+		*line = ft_strjoin(gl.tmp, gl.buf);
+		if (!*line || gl.rd < 0)
 			return (-1);
-		ft_strdel(&tmp);
+		ft_strdel(&gl.tmp);
 	}
-	return (ft_strlen(*line) || ft_strlen(rest) || rd);
+	return (ft_strlen(*line) || ft_strlen(rest) || gl.rd);
 }
 
 int	get_next_line(const int fd, char **line)
