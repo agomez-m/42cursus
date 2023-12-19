@@ -1,55 +1,55 @@
 # Common Core Projects - Arturo Gómez
 
-¡Bienvenido a mi repositorio de proyectos del Common Core de Campus42!
+Welcome to my Campus42 Common Core projects repository!
 
-En este repositorio encontrarás una colección de proyectos realizados como parte del Common Core en 42. Estos proyectos abarcan una variedad de temas y tecnologías, y representan mi trabajo y aprendizaje en la escuela 42.
+In this repository, you'll find a collection of projects completed as part of the Common Core at 42. These projects cover a variety of topics and technologies, showcasing my work and learning at school 42.
 
-## Lista de Proyectos
+## Project List
 0. [LIBFTCOM](https://github.com/agomez-m/42cursus/tree/main/LIBFTCOM)
-   - Libft + get_next_line (modificado) + ft_printf 
+   - Libft + get_next_line (modified) + ft_printf 
 
 1. [ft_printf](https://github.com/agomez-m/42cursus/tree/main/ft_printf)
-   - Descripción: Implementación de la función printf en C.
-   - inspired code YTB "Oceano minifprint"
+   - Description: Implementation of the printf function in C.
+   - Inspired by code from YouTube channel "Oceano minifprint"
 
 2. [get_next_line](https://github.com/agomez-m/42cursus/tree/main/getnextline)
-   - Descripción: Implementación de una función para leer líneas de un archivo o entrada estándar.
-   - inspired code YTB "Oceano gnl"
+   - Description: Implementation of a function to read lines from a file or standard input.
+   - Inspired by code from YouTube channel "Oceano gnl"
 
 3. [Libft](https://github.com/agomez-m/42cursus/tree/main/Libft)
-   - Descripción: Creación de una biblioteca de funciones en C.
+   - Description: Creation of a function library in C.
 
 4. [Born2beroot](https://github.com/agomez-m/42cursus/tree/main/Born2beroot)
-   - Descripción: Creación de Máquina Virtual  
+   - Description: Creation of a Virtual Machine.
 
 5. [Push_swap](https://github.com/agomez-m/42cursus/tree/main/Push_swap)
-   - Description: Función que ordena una serie de enteros
-   - inspired code YTB "Oceano Pushswap" 
+   - Description: Function that sorts a series of integers.
+   - Inspired by code from YouTube channel "Oceano Pushswap"
 
 6. [MiniTalk](https://github.com/agomez-m/42cursus/tree/main/MINITALK)
-   - Descripción: programa de comunicación de caracteres cliente-servidor con 2 señales (1 y 0)
-   - Inspired code:
-   -    https://www.youtube.com/playlist?list=PL9LZM-hWdUvsqXxqghK5H1fF07nCV9MyF
-   -    https://github.com/hanshazairi/42-minitalk
-   -    https://git.chevro.fr/42-cestoliv/minitalk/-/tree/nosleep
+   - Description: Client-server character communication program using 2 signals (1 and 0).
+   - Inspired by:
+     - [YouTube playlist](https://www.youtube.com/playlist?list=PL9LZM-hWdUvsqXxqghK5H1fF07nCV9MyF)
+     - [hanshazairi/42-minitalk](https://github.com/hanshazairi/42-minitalk)
+     - [git.chevro.fr/42-cestoliv/minitalk](https://git.chevro.fr/42-cestoliv/minitalk/-/tree/nosleep)
 
 7. [FDF](https://github.com/agomez-m/42cursus/tree/main/FDF)
-   - Descripción: lectura de coordenadas XYZ y display gráfico 3D isométrico, con libreria minilibx
-   - Inspired code:
-   -    https://harm-smits.github.io/42docs/libs/minilibx
-   -    https://www.youtube.com/watch?v=10P59aOgi68&t=366s
-   -    https://github.com/nikGrape/FDF
+   - Description: Reading XYZ coordinates and displaying isometric 3D graphics with minilibx library.
+   - Inspired by:
+     - [harm-smits/42docs/libs/minilibx](https://harm-smits.github.io/42docs/libs/minilibx)
+     - [YouTube tutorial](https://www.youtube.com/watch?v=10P59aOgi68&t=366s)
+     - [nikGrape/FDF](https://github.com/nikGrape/FDF)
 
-## Objetivos
+## Objectives
 
-El objetivo de este repositorio es mostrar mi progreso y habilidades en programación y desarrollo de software. Cada proyecto representa un desafío único y una oportunidad de aprender nuevas habilidades y conceptos.
+The goal of this repository is to showcase my progress and skills in programming and software development. Each project represents a unique challenge and an opportunity to learn new skills and concepts.
 
-## Contacto
+## Contact
 
-Si deseas obtener más información sobre cualquiera de estos proyectos o tienes alguna pregunta, no dudes en contactarme:
+If you would like more information about any of these projects or have any questions, feel free to contact me:
 
 - LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/arturo-g%C3%B3mez-mart%C3%ADn-crespo-b7a5355a/?originalSubdomain=es)
 
-¡Gracias por visitar mi repositorio!
+Thanks for visiting my repository!
 
 ---
