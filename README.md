@@ -33,8 +33,8 @@ En este repositorio encontrarás una colección de proyectos realizados como par
    -    https://github.com/hanshazairi/42-minitalk
    -    https://git.chevro.fr/42-cestoliv/minitalk/-/tree/nosleep
 
-7. [FDF]()
-   - Descripción: lectura de coordenadas XYZ en formato matriz y display gráfico con minilibx
+7. [FDF](https://github.com/agomez-m/42cursus/tree/main/FDF)
+   - Descripción: lectura de coordenadas XYZ y display gráfico 3D isométrico, con libreria minilibx
    - Inspired code:
    -    https://harm-smits.github.io/42docs/libs/minilibx
    -    https://www.youtube.com/watch?v=10P59aOgi68&t=366s
