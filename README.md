@@ -5,6 +5,8 @@
 En este repositorio encontrarás una colección de proyectos realizados como parte del Common Core en 42. Estos proyectos abarcan una variedad de temas y tecnologías, y representan mi trabajo y aprendizaje en la escuela 42.
 
 ## Lista de Proyectos
+0. [LIBFTCOM](https://github.com/agomez-m/42cursus/tree/main/LIBFTCOM)
+   - Libft + get_next_line (modificado) + ft_printf 
 
 1. [ft_printf](https://github.com/agomez-m/42cursus/tree/main/ft_printf)
    - Descripción: Implementación de la función printf en C.
@@ -36,6 +38,7 @@ En este repositorio encontrarás una colección de proyectos realizados como par
    - Inspired code:
    -    https://harm-smits.github.io/42docs/libs/minilibx
    -    https://www.youtube.com/watch?v=10P59aOgi68&t=366s
+   -    https://github.com/nikGrape/FDF
 
 ## Objetivos
 
