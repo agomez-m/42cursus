@@ -22,6 +22,7 @@ In this repository, you'll find a collection of projects completed as part of th
 4. [Born2beroot](https://github.com/agomez-m/42cursus/tree/main/Born2beroot)
    - Description: Creation of a Virtual Machine.
    - Inspired by code [pasqualerossi/Born2BeRoot-Guide](https://github.com/pasqualerossi/Born2BeRoot-Guide)
+   - Inspired by code [gemartin99/Born2beroot](https://github.com/gemartin99/Born2beroot-Tutorial)
 
 5. [Push_swap](https://github.com/agomez-m/42cursus/tree/main/Push_swap)
    - Description: Function that sorts a series of integers.
