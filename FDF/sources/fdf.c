@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		ft_error("To display a map: ./fdf MAP.fdf");
 	matrix = read_map(*++argv);
 	param_default(&matrix[0][0]);
-	draw_lines(matrix);
+	draw_lines(matrix); 
 	mlx_key_hook(matrix[0][0].win_ptr, deal_key, matrix);
 	mlx_loop(matrix[0][0].mlx_ptr);
 }
