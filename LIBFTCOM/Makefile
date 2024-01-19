@@ -6,7 +6,7 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:32:39 by agomez-m          #+#    #+#              #
-#    Updated: 2023/12/15 19:07:11 by agomez-m         ###   ########.fr        #
+#    Updated: 2024/01/05 19:10:29 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,8 @@ SRC = 	$ ft_atoi.c \
 	$ ft_strclr.c\
 	$ ft_strchr2.c \
 	$ ft_strncat.c
-	
+
+
 OBJ = $(SRC:.c=.o)
 
 NAME = libftcom.a
@@ -83,6 +84,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
+    
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
