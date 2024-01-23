@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 17:04:12 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 12:00:03 by agomez-m         ###   ########.fr       */
+/*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
+/*   Updated: 2024/01/23 12:34:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-u_int64_t	ft_get_time(void)
+bool	ft_philo_died(t_philo *philo)
 {
-	struct timeval	tv;
+	bool		result;
+	t_data		*data;
 
-	if (gettimeofday(&tv, NULL))
-		return (0);
-	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
-}
-
-void	ft_usleep(uint64_t sleep_time)
-{
-	u_int64_t	start;
-
-	start = ft_get_time();
-	while ((ft_get_time() - start) < sleep_time)
-		usleep(500);
+	data = philo->data;
+	result = false;
+	if (get_time() - ge_mutex_last_eat_time(philo) > get_mutex_die_time(data)
+		&& get_mutex_philo_state(philo) != EATING)
+	{
+		set_mutex_philo_state(philo, DEAD);
+		result = true;
+	}
+	return (result);
 }

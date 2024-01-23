@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:47:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/22 16:49:52 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:05:00 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,23 @@ int	ft_atoi(char *str)
 		count++;
 	}
 	return (result * sign);
+}
+
+int	handle_1_philo(t_philo *philo)
+{
+	take_left_fork(philo);
+	ft_usleep(get_mutex_die_time(philo->data));
+	set_mutex_philo_state(philo, DEAD);
+	return (1);
+}
+
+void	ft_print_msg(t_data *data, int id, char *msg)
+{
+	uint64_t	time;
+
+	time = ft_get_time() - get_mutex_start_time(data);
+	pthread_mutex_lock(&data->mut_print);
+	if (get_mutex_keep_iter(data))
+		printf("%llu %d %s\n", time, id, msg);
+	pthread_mutex_unlock(&data->mut_print);
 }
