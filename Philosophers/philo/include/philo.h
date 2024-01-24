@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 12:38:10 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:43:57 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef struct s_data
 }				t_data;
 
 // eat
-int			take_left_fork(t_philo *philo);
-int			take_right_fork(t_philo *philo);
+int			ft_take_left_fork(t_philo *philo);
+int			ft_take_right_fork(t_philo *philo);
 int			ft_take_forks(t_philo *philo);
 void		ft_drop_forks(t_philo *philo);
 int			ft_eat(t_philo *philo);
@@ -93,14 +93,17 @@ int			init_forks(t_data *data);
 int			check_input_digits(int argc, char **argv);
 int			wrong_input_check(int argc, char **argv);
 int			check_args(int argc, char **argv);
-// mutexget
-int			get_mutex_nb_philos(t_data *data);
+// mutextime
 uint64_t	get_mutex_die_time(t_data *data);
 uint64_t	get_mutex_eat_time(t_data *data);
 uint64_t	get_mutex_sleep_time(t_data *data);
-t_state	get_mutex_philo_state(t_philo *philo);
-bool	get_mutex_keep_iter(t_data *data);
 uint64_t	get_mutex_start_time(t_data *data);
+uint64_t	get_mutex_last_eat_time(t_philo *philo);
+//mutexget
+int			get_mutex_nb_philos(t_data *data);
+int			get_mutex_nb_meals_philo_had(t_philo *philo);
+bool		get_mutex_keep_iter(t_data *data);
+t_state		get_mutex_philo_state(t_philo *philo);
 // mutexset
 void		set_mutex_keep_iterating(t_data *data, bool set_to);
 void		set_mutex_philo_state(t_philo *philo, t_state state);
@@ -110,21 +113,27 @@ void		update_mutex_last_meal_time(t_philo *philo);
 int			init_program(int argc, char **argv);
 int			main(int argc, char **argv);
 // routine
-void		*routine(void *philo_p);
-void		*all_alive_routine(void *data_p);
+void		*ft_routine(void *philo_p);
+void		*ft_all_alive_routine(void *data_p);
+void		*ft_all_full_routine(void *data_p);
 // sleepthink
 int			ft_sleep(t_philo *philo);
 int			ft_think(t_philo *philo);
 // state
 bool		ft_philo_died(t_philo *philo);
+bool		ft_is_philo_full(t_data *data, t_philo *philo);
+void		ft_notify_all_philos(t_data *data);
 // threads
 int			init_threads(t_data *data);
+int			join_threads(t_data *data);
+void		ft_free_data(t_data *data);
 // time
 uint64_t	ft_get_time(void);
 void		ft_usleep(uint64_t sleep_time);
 // utils
 int			ft_atoi(char *str);
 int			handle_1_philo(t_philo *philo);
+bool		nb_meals_optional(t_data *data);
 void		ft_print_msg(t_data *data, int id, char *msg);
 
 

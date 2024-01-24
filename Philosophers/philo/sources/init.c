@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 10:05:12 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:33:46 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ int	malloc_philsforksths(t_data *data)
 	return (0);
 }
 
+/*
+Con malloc_philsforksths, reservamos memoria para los filosofos (t_philo),
+los tenedores (pthread_mutex_t) y los hilos (pthread_t).
+*/
+
 int	init_data(t_data *data, int argc, char **argv)
 {
 	data->nb_full_p = 0;
@@ -34,7 +39,7 @@ int	init_data(t_data *data, int argc, char **argv)
 	data->die_time = (u_int64_t) ft_atoi(argv[2]);
 	data->eat_time = (u_int64_t) ft_atoi(argv[3]);
 	data->sleep_time = (u_int64_t) ft_atoi(argv[4]);
-	data->nb_meals = -1;
+	data->nb_meals = -1; // -1 means no limit
 	if (argc == 6)
 		data->nb_meals = ft_atoi(argv[5]);
 	pthread_mutex_init(&data->mut_eat_t, NULL);
@@ -49,14 +54,19 @@ int	init_data(t_data *data, int argc, char **argv)
 	return (0);
 }
 
+/*
+Con init_data, inicializamos la estructura data, que contiene 
+los datos de entrada del programa y los mutex que se van a usar.
+*/
+
 int	init_philos(t_data *data)
 {
 	t_philo	*philos;
 	int		i;
 
-	i = -1;
+	i = 0;
 	philos = data->philos;
-	while (++i < data->nb_philos)
+	while (i++ < data->nb_philos)
 	{
 		philos[i].data = data;
 		philos[i].id = i + 1;
@@ -65,10 +75,15 @@ int	init_philos(t_data *data)
 		pthread_mutex_init(&philos[i].mut_state, NULL);
 		pthread_mutex_init(&philos[i].mut_nb_meals_had, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
-		update_last_meal_time(&philos[i]);
+		update_mutex_last_meal_time(&philos[i]);
 	}
 	return (0);
 }
+
+/*
+Con init_philos, inicializamos la estructura philos, que contiene
+los datos de cada filosofo y los mutex que se van a usar.
+*/
 
 int	init_forks(t_data *data)
 {
@@ -89,3 +104,8 @@ int	init_forks(t_data *data)
 	}
 	return (0);
 }
+
+/*
+Con init_forks, inicializamos la estructura forks, que contiene
+los mutex de los tenedores Y asignamos a cada filosofo sus tenedores.
+*/

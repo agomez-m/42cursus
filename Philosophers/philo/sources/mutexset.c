@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setmutex.c                                         :+:      :+:    :+:   */
+/*   mutexset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:49:20 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 12:16:18 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:36:20 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	update_mutex_nb_meals_had(t_philo *philo)
 void	update_mutex_last_meal_time(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->mut_last_eat_time);
-	philo->last_eat_time = get_time();
+	philo->last_eat_time = ft_get_time();
 	pthread_mutex_unlock(&philo->mut_last_eat_time);
 }

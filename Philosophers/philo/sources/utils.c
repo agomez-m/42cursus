@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:47:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 12:05:00 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:43:40 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,17 @@ int	ft_atoi(char *str)
 
 int	handle_1_philo(t_philo *philo)
 {
-	take_left_fork(philo);
+	ft_take_left_fork(philo);
 	ft_usleep(get_mutex_die_time(philo->data));
 	set_mutex_philo_state(philo, DEAD);
 	return (1);
+}
+
+bool	nb_meals_optional(t_data *data)
+{
+	if (data->nb_meals > 0)
+		return (true);
+	return (false);
 }
 
 void	ft_print_msg(t_data *data, int id, char *msg)

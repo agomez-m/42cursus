@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 12:34:05 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:08:03 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,40 @@ bool	ft_philo_died(t_philo *philo)
 
 	data = philo->data;
 	result = false;
-	if (get_time() - ge_mutex_last_eat_time(philo) > get_mutex_die_time(data)
-		&& get_mutex_philo_state(philo) != EATING)
+	/*
+	if (philo == NULL || philo->data == NULL) 
+	{
+		printf("Error: NULL pointer\n");
+	}
+	*/
+	if (ft_get_time() - get_mutex_last_eat_time(philo) \
+		> get_mutex_die_time(data) && get_mutex_philo_state(philo) != EATING)
 	{
 		set_mutex_philo_state(philo, DEAD);
 		result = true;
 	}
 	return (result);
+}
+
+bool	ft_is_philo_full(t_data *data, t_philo *philo)
+{
+	bool	result;
+
+	result = false;
+	if (get_mutex_nb_meals_philo_had(philo) >= data->nb_meals)
+		result = true;
+	return (result);
+}
+
+void	ft_notify_all_philos(t_data *data)
+{
+	t_philo	*philos;
+	int		i;
+	int		nb_philos;
+
+	nb_philos = get_mutex_nb_philos(data);
+	philos = data->philos;
+	i = -1;
+	while (++i < nb_philos)
+		set_mutex_philo_state(&philos[i], DEAD);
 }

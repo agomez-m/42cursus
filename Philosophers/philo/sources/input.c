@@ -6,9 +6,11 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:46 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/22 16:58:54 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:34:58 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/philo.h"
 
 int	check_input_digits(int argc, char **argv)
 {
@@ -66,3 +68,11 @@ int	check_args(int argc, char **argv)
 		return (1);
 	return (0);
 }
+
+/*
+comprobamos que todos sean numeros y no caracteres
+comprobamos si el tiempo es menor que 60 segundos
+comprobamos si el numero de filosofos es menor que 1 o mayor que 200
+comprobamos si el numero de comidas es menor o igual que 0
+
+*/

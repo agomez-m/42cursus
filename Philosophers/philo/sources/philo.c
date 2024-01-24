@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:55:47 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 10:06:50 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:13:30 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	init_program(int argc, char **argv)
 	init_philos(&data);
 	init_forks(&data);
 	init_threads(&data);
+	join_threads(&data);
+	ft_free_data(&data);
+	return (0);
 }
 
 int	main(int argc, char **argv)
