@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/24 16:08:03 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:03:07 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ bool	ft_philo_died(t_philo *philo)
 
 	data = philo->data;
 	result = false;
-	/*
-	if (philo == NULL || philo->data == NULL) 
-	{
-		printf("Error: NULL pointer\n");
-	}
-	*/
 	if (ft_get_time() - get_mutex_last_eat_time(philo) \
 		> get_mutex_die_time(data) && get_mutex_philo_state(philo) != EATING)
 	{
@@ -44,7 +38,7 @@ bool	ft_is_philo_full(t_data *data, t_philo *philo)
 	return (result);
 }
 
-void	ft_notify_all_philos(t_data *data)
+void	ft_dead_all_philos(t_data *data)
 {
 	t_philo	*philos;
 	int		i;

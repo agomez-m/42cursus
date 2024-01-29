@@ -6,14 +6,14 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 15:57:12 by agomez-m          #+#    #+#              #
-#    Updated: 2024/01/24 15:48:39 by agomez-m         ###   ########.fr        #
+#    Updated: 2024/01/29 18:32:26 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror 
 
 SRC_DIR = sources/
 OBJ_DIR = objects/

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/24 15:43:57 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:03:32 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int			ft_think(t_philo *philo);
 // state
 bool		ft_philo_died(t_philo *philo);
 bool		ft_is_philo_full(t_data *data, t_philo *philo);
-void		ft_notify_all_philos(t_data *data);
+void		ft_dead_all_philos(t_data *data);
 // threads
 int			init_threads(t_data *data);
 int			join_threads(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/24 15:33:46 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:12:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	malloc_philsforksths(t_data *data)
 		return (1);
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (data->forks == NULL)
-		return (1);
+		return (free(data->philos), 1);
 	data->philo_ths = malloc(sizeof(pthread_t) * data->nb_philos);
 	if (data->philo_ths == NULL)
-		return (1);
+		return (free(data->philos), free(data->forks), 1);
 	return (0);
 }
 
@@ -39,7 +39,7 @@ int	init_data(t_data *data, int argc, char **argv)
 	data->die_time = (u_int64_t) ft_atoi(argv[2]);
 	data->eat_time = (u_int64_t) ft_atoi(argv[3]);
 	data->sleep_time = (u_int64_t) ft_atoi(argv[4]);
-	data->nb_meals = -1; // -1 means no limit
+	data->nb_meals = -1;
 	if (argc == 6)
 		data->nb_meals = ft_atoi(argv[5]);
 	pthread_mutex_init(&data->mut_eat_t, NULL);
@@ -49,9 +49,7 @@ int	init_data(t_data *data, int argc, char **argv)
 	pthread_mutex_init(&data->mut_nb_philos, NULL);
 	pthread_mutex_init(&data->mut_keep_iter, NULL);
 	pthread_mutex_init(&data->mut_start_time, NULL);
-	if (malloc_philsforksths(data) != 0)
-		return (1);
-	return (0);
+	return (malloc_philsforksths(data));
 }
 
 /*
@@ -66,7 +64,7 @@ int	init_philos(t_data *data)
 
 	i = 0;
 	philos = data->philos;
-	while (i++ < data->nb_philos)
+	while (i < data->nb_philos)
 	{
 		philos[i].data = data;
 		philos[i].id = i + 1;
@@ -76,6 +74,7 @@ int	init_philos(t_data *data)
 		pthread_mutex_init(&philos[i].mut_nb_meals_had, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
 		update_mutex_last_meal_time(&philos[i]);
+		i += 1;
 	}
 	return (0);
 }
@@ -92,15 +91,19 @@ int	init_forks(t_data *data)
 
 	philos = data->philos;
 	i = 0;
-	while (i++ < data->nb_philos)
+	while (i < data->nb_philos)
+	{
 		pthread_mutex_init(&data->forks[i], NULL);
+		i += 1;
+	}
 	i = 1;
 	philos[0].left_f = &data->forks[0];
 	philos[0].right_f = &data->forks[data->nb_philos - 1];
-	while (i++ < data->nb_philos)
+	while (i < data->nb_philos)
 	{
 		philos[i].left_f = &data->forks[i];
 		philos[i].right_f = &data->forks[i - 1];
+		i += 1;
 	}
 	return (0);
 }

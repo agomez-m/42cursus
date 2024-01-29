@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:05 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/24 15:41:11 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:57:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int	init_threads(t_data *data)
 	nb_philos = get_mutex_nb_philos(data);
 	i = 0;
 	data->start_time = ft_get_time();
-	while (i++ < nb_philos)
+	while (i < nb_philos)
 	{
 		if (pthread_create(&data->philo_ths[i], NULL,
 				&ft_routine, &data->philos[i]))
 			return (1);
+		i += 1;
 	}
 	if (pthread_create(&data->monit_all_alive, NULL,
 			&ft_all_alive_routine, data))
@@ -54,10 +55,11 @@ int	join_threads(t_data *data)
 	if (nb_meals_optional(data) == true
 		&& pthread_join(data->monit_all_full, NULL))
 		return (1);
-	while (i++ < nb_philos)
+	while (i < nb_philos)
 	{
 		if (pthread_join(data->philo_ths[i], NULL))
 			return (1);
+		i += 1;
 	}
 	return (0);
 }
