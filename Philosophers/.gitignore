@@ -2,6 +2,6 @@ a.out/
 ejemJam/
 en.subject.pdf/
 .DS_Store/
-en.subject.pdf
-errors_log
-start.sh
+en.subject.pdf/
+errors_log/
+start.sh/
