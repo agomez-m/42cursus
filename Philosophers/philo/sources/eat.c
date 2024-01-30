@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:40:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/24 16:37:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:09:27 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	ft_eat(t_philo *philo)
 		return (1);
 	set_mutex_philo_state(philo, EATING);
 	ft_print_msg(philo->data, philo->id, EAT);
-	update_mutex_last_meal_time(philo);
 	ft_usleep(get_mutex_eat_time(philo->data));
+	update_mutex_last_meal_time(philo);
 	update_mutex_nb_meals_had(philo);
 	ft_drop_forks(philo);
 	return (0);
