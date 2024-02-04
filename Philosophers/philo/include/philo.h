@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/01 16:41:37 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 12:27:32 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void		set_mutex_philo_state(t_philo *philo, t_state state);
 void		update_mutex_nb_meals_had(t_philo *philo);
 void		update_mutex_last_meal_time(t_philo *philo);
 // philo
-int			ft_init_program(int argc, char **argv);
+int			ft_run_program(int argc, char **argv);
 int			main(int argc, char **argv);
 // routine
 void		*ft_routine(void *philo_p);

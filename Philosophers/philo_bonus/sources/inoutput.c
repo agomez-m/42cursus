@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   inoutput.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:46 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/02 19:24:30 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:35:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,17 @@ comprobamos si el numero de filosofos es menor que 1 o mayor que 200
 comprobamos si el numero de comidas es menor o igual que 0
 
 */
+
+int	print_msg(t_data *data, char *msg)
+{
+	sem_wait(data->sem_print);
+	if (someone_died())
+	{
+		sem_post(data->sem_print);
+		return (1);
+	}
+	printf("%llu %d %s\n", ft_get_time() - data->start_time,
+		data->philo.id, msg);
+	sem_post(data->sem_print);
+	return (0);
+}

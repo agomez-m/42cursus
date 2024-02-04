@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/29 11:12:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 12:46:24 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int	malloc_philsforksths(t_data *data)
 }
 
 /*
-Con malloc_philsforksths, reservamos memoria para los filosofos (t_philo),
-los tenedores (pthread_mutex_t) y los hilos (pthread_t).
+reservamos memoria para 
+filosofos (t_philo),
+tenedores (pthread_mutex_t) 
+hilos (pthread_t).
 */
 
 int	init_data(t_data *data, int argc, char **argv)
@@ -53,8 +55,9 @@ int	init_data(t_data *data, int argc, char **argv)
 }
 
 /*
-Con init_data, inicializamos la estructura data, que contiene 
-los datos de entrada del programa y los mutex que se van a usar.
+inicializamos la estructura data
+datos de entrada del programa 
+y los mutex que se van a usar.
 */
 
 int	init_philos(t_data *data)
@@ -80,8 +83,9 @@ int	init_philos(t_data *data)
 }
 
 /*
-Con init_philos, inicializamos la estructura philos, que contiene
-los datos de cada filosofo y los mutex que se van a usar.
+inicializamos la estructura philos
+los datos de cada filosofo 
+y los mutex que se van a usar.
 */
 
 int	init_forks(t_data *data)
@@ -109,6 +113,6 @@ int	init_forks(t_data *data)
 }
 
 /*
-Con init_forks, inicializamos la estructura forks, que contiene
-los mutex de los tenedores Y asignamos a cada filosofo sus tenedores.
+inicializamos los mutex de los tenedores
+lY asignamos a cada filosofo sus tenedores.
 */

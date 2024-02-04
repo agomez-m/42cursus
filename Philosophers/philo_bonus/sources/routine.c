@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:54:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/03 18:21:46 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:05:18 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,12 @@ void	*ft_routine(t_data *data, int id)
 		exit (1);
 	while (true)
 	{
-		
-		if (ft_eat(data) || stop_if(get_philo_state(data)))
-		{
+		if (ft_eat(data) || stop_if(data->philo.state))
 			break ;
-		}
-		if (ft_sleep(data) || stop_if(get_philo_state(data)))
-		{
+		if (ft_sleep(data) || stop_if(data->philo.state))
 			break ;
-		}
-		if (ft_think(data) || stop_if(get_philo_state(data)))
-		{
+		if (ft_think(data))
 			break ;
-		}
 	}
 	if (pthread_join(data->monitor, NULL))
 		exit(1);

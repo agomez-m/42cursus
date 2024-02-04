@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/03 12:32:44 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:00:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	someone_died(void)
 
 bool	philo_died(t_data *data)
 {
-	if (get_philo_state(data) != EATING
+	if (data->philo.state != EATING
 		&& ft_get_time() - data->philo.last_eat_time > data->die_time)
 		return (true);
 	return (false);
@@ -46,16 +46,16 @@ void	*monitor_death(void *data_p)
 	t_data	*data;
 
 	data = (t_data *)data_p;
-	while (stop_if(get_philo_state(data)) == false)
+	while (stop_if(data->philo.state) == false)
 	{
 		if (someone_died())
-			return (set_philo_state(data, FINISH), NULL);
+			return (data->philo.state = FINISH, NULL);
 		if (philo_died(data))
 		{
 			sem_wait(data->sem_print);
 			if (philo_died(data) && someone_died() == false)
 			{
-				set_philo_state(data, DEAD);
+				data->philo.state = DEAD;
 				sem_open("/death", O_CREAT, 0644, 0);
 				printf("%llu %d %s\n", ft_get_time() - data->start_time,
 					data->philo.id, DIED);

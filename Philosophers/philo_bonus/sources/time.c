@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:04:12 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/03 11:36:30 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:34:28 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,5 @@ void	ft_usleep(uint64_t sleep_time)
 
 	start = ft_get_time();
 	while ((ft_get_time() - start) < sleep_time)
-		usleep(500);
-}
-
-void	ft_usleep1(uint64_t sleep_time, uint64_t lastime)
-{
-	while ((ft_get_time() - lastime) < sleep_time)
 		usleep(500);
 }

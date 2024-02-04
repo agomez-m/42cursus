@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:19:38 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/02 19:23:20 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:52:40 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_sleep(t_data *data)
 {
-	set_philo_state(data, SLEEPING);
+	data->philo.state = SLEEPING;
 	if (print_msg(data, SLEEP))
 		return (1);
 	ft_usleep(data->sleep_time);

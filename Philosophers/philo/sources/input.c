@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:46 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/01 16:30:09 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 12:26:15 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int	ft_check_args(int argc, char **argv)
 	}
 	if (check_input_digits(argc, argv) == 1)
 	{
-		printf("Error: Wrong input\n");
+		printf("Error: Wrong input (or negative/letters) \
+			Only numbers (0-200 philos) DIE EAT SLEEP");
 		return (1);
 	}
 	if (wrong_input_check(argc, argv) == 1)

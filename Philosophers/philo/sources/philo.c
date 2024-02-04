@@ -6,13 +6,13 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:55:47 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/01 16:29:55 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 12:27:20 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	ft_init_program(int argc, char **argv)
+int	ft_run_program(int argc, char **argv)
 {
 	t_data	data;
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 {
 	if (ft_check_args(argc, argv) == 1)
 		return (1);
-	if (ft_init_program(argc, argv) == 1)
+	if (ft_run_program(argc, argv) == 1)
 	{
 		printf("Error: Malloc error\n");
 		return (1);

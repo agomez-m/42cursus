@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:54:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/29 14:13:21 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 15:45:56 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,9 @@ void	*ft_routine(void *philo_p)
 		ft_usleep(philo->data->eat_time - 10);
 	while (get_mutex_philo_state(philo) != DEAD)
 	{
-		if (ft_eat(philo) != 0)
+		if ((ft_eat(philo) != 0) || (get_mutex_philo_state(philo) == DEAD))
 			break ;
-		if (get_mutex_philo_state(philo) == DEAD)
-			break ;
-		if (ft_sleep(philo) != 0)
-			break ;
-		if (get_mutex_philo_state(philo) == DEAD)
+		if ((ft_sleep(philo) != 0) || (get_mutex_philo_state(philo) == DEAD))
 			break ;
 		if (ft_think(philo) != 0)
 			break ;
