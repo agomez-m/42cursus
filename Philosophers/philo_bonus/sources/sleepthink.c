@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   sleepthink.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 15:55:47 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/01 16:29:55 by agomez-m         ###   ########.fr       */
+/*   Created: 2024/01/23 12:19:38 by agomez-m          #+#    #+#             */
+/*   Updated: 2024/02/02 19:23:20 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "../include/philo_bonus.h"
 
-int	ft_init_program(int argc, char **argv)
+int	ft_sleep(t_data *data)
 {
-	t_data	data;
-
-	if (init_data(&data, argc, argv) != 0)
+	set_philo_state(data, SLEEPING);
+	if (print_msg(data, SLEEP))
 		return (1);
-	init_philos(&data);
-	init_forks(&data);
-	init_threads(&data);
-	join_threads(&data);
-	ft_free_data(&data);
+	ft_usleep(data->sleep_time);
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	ft_think(t_data *data)
 {
-	if (ft_check_args(argc, argv) == 1)
+	if (print_msg(data, THINK))
 		return (1);
-	if (ft_init_program(argc, argv) == 1)
-	{
-		printf("Error: Malloc error\n");
-		return (1);
-	}
 	return (0);
 }

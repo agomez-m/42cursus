@@ -6,11 +6,11 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:46 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/01 16:30:09 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:24:30 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "../include/philo_bonus.h"
 
 int	check_input_digits(int argc, char **argv)
 {

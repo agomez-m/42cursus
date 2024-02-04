@@ -6,21 +6,20 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/29 14:03:32 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:41:37 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <unistd.h>
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <stdint.h>
-# include <stdbool.h>
+# include <unistd.h> // usleep()
+# include <stdio.h> // printf()
+# include <stdlib.h> // malloc() free() exit() 
+# include <sys/time.h> // gettimeofday() 
+# include <stdint.h> // uint64_t 
+# include <stdbool.h> // bool
+# include <pthread.h> // pthread_create() pthread_join()
 
 # define TAKE_FORK "has taken a fork"
 # define THINK "is thinking"
@@ -92,7 +91,7 @@ int			init_forks(t_data *data);
 // input
 int			check_input_digits(int argc, char **argv);
 int			wrong_input_check(int argc, char **argv);
-int			check_args(int argc, char **argv);
+int			ft_check_args(int argc, char **argv);
 // mutextime
 uint64_t	get_mutex_die_time(t_data *data);
 uint64_t	get_mutex_eat_time(t_data *data);
@@ -110,7 +109,7 @@ void		set_mutex_philo_state(t_philo *philo, t_state state);
 void		update_mutex_nb_meals_had(t_philo *philo);
 void		update_mutex_last_meal_time(t_philo *philo);
 // philo
-int			init_program(int argc, char **argv);
+int			ft_init_program(int argc, char **argv);
 int			main(int argc, char **argv);
 // routine
 void		*ft_routine(void *philo_p);
