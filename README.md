@@ -45,7 +45,6 @@ In this repository, you'll find a collection of projects completed as part of th
 8. [Philosophers](https://github.com/agomez-m/42cursus/tree/main/Philosophers)
    - Description: The dining philosophers problem involves modeling and synchronizing the behavior with threads
    - Inspired by:
-     - [github Jamshidbek200](https://github.com/Jamshidbek2000/philosophers_42/tree/master)
      - [YouTube video](https://www.youtube.com/watch?v=UGQsvVKwe90)
      - [Youtube playlist](https://www.youtube.com/playlist?list=PLGU1kcPKHMKi41Py2kqxdvqYE3M9VhCHe)
 
