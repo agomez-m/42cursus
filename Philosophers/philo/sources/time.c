@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:04:12 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/01/23 12:00:03 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:11:04 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ u_int64_t	ft_get_time(void)
 		return (0);
 	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }
+
+/*convertimos el tiempo actual a milisegundos y lo devolvemos. gettimeofday()
+nos da el tiempo en segundos y microsegundos, por lo que lo convertimos a
+milisegundos.*/
 
 void	ft_usleep(uint64_t sleep_time)
 {

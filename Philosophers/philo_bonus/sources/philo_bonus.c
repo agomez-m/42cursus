@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:55:47 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/04 18:22:44 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:27:23 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_philobonus(int argc, char **argv)
 	ft_run(&data);
 	sem_close(data.sem_forks);
 	sem_close(data.sem_print);
+	sem_close(data.philo.sem_philo);
 	return (0);
 }
 

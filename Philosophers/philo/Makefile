@@ -6,14 +6,14 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 15:57:12 by agomez-m          #+#    #+#              #
-#    Updated: 2024/01/29 18:32:26 by agomez-m         ###   ########.fr        #
+#    Updated: 2024/02/05 10:45:20 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=thread
 
 SRC_DIR = sources/
 OBJ_DIR = objects/
@@ -37,6 +37,6 @@ fclean: clean
 	$(RM) $(NAME) 
 
 re: fclean all
-#-g #-fsanitize=thread
+
 .PHONY: all clean fclean re
 

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/02 19:41:06 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:56:30 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	ft_init_data(t_data *data, int argc, char **argv)
 	data->philo.data = data;
 	data->philo.nb_meals_had = 0;
 	data->philo.state = IDLE;
+	data->philo.is_dead = false;
 	return (ft_init_sem(data));
 }
 

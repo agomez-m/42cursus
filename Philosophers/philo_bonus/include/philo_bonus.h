@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/04 18:06:58 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:56:38 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				nb_meals_had;
+	bool			is_dead;
 	struct s_data	*data;
 	t_state			state;
 	u_int64_t		last_eat_time;
@@ -81,7 +82,7 @@ char		*ft_strjoin(char *s1, char *s2);
 // routine.c
 int			set_philo(t_data *data, int id);
 bool		stop_if(t_state state);
-void		*ft_routine(t_data *data, int id);
+int			ft_routine(t_data *data, int id);
 // monitor.c
 bool		someone_died(void);
 bool		philo_died(t_data *data);
@@ -90,13 +91,16 @@ void		*monitor_death(void *data_p);
 int			ft_eat(t_data *data);
 bool		philo_is_full(t_data *data);
 bool		nb_meals_option_given(t_data *data);
-// semset.c
-int			print_msg(t_data *data, char *msg);
-void		print_sem(t_data *data, char *str);
+// sem.c
+void		set_philo_state(t_data *data, t_state state);
+void		update_last_meal_time(t_data *data);
+t_state		get_philo_state(t_data *data);
+uint64_t	get_last_eat_time(t_data *data);
 // sleepthink.c
 int			ft_sleep(t_data *data);
 int			ft_think(t_data *data);
-// input.c
+// inoutput.c
 int			ft_check_args(int argc, char **argv);
+int			print_msg(t_data *data, char *msg);
 
 #endif

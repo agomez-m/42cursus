@@ -6,69 +6,33 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/04 18:00:05 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:10:47 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
-bool	someone_died(void)
+void	*monitor_death(void *args)
 {
-	sem_t	*death;
+	t_data		*data;
+	u_int64_t	time;
 
-	death = sem_open("/death", AT_EACCESS, 0);
-	if (death == SEM_FAILED)
-		return (false);
-	sem_close(death);
-	return (true);
-}
-
-/*	la funcion comprueba si el semaforo "/death" existe y si el usuario tiene 
-	permiso para acceder a el (leer/escribir)
-	0: abrir para leer/escribir (O_RDWR)
-	0: permisos (ignorados ya que el semaforo ya existe)
-	// AT_EACCESS: check if semaphore exists and user has permission 
-		to access it (read/write)
-	// 0: open for read/write access (O_RDWR) 
-	// 0: permissions (ignored since semaphore already exists)
-*/
-
-bool	philo_died(t_data *data)
-{
-	if (data->philo.state != EATING
-		&& ft_get_time() - data->philo.last_eat_time > data->die_time)
-		return (true);
-	return (false);
-}
-
-void	*monitor_death(void *data_p)
-{
-	t_data	*data;
-
-	data = (t_data *)data_p;
-	while (stop_if(data->philo.state) == false)
+	data = (t_data *)args;
+	data->philo.last_eat_time = data->start_time;
+	while (1)
 	{
-		if (someone_died())
-			return (data->philo.state = FINISH, NULL);
-		if (philo_died(data))
+		if (ft_get_time() > data->philo.last_eat_time + data->die_time)
 		{
+			time = ft_get_time() - data->start_time;
+			sem_wait(data->philo.sem_philo);
+			data->philo.is_dead = true;
+			sem_post(data->philo.sem_philo);
+			set_philo_state(data, DEAD);
 			sem_wait(data->sem_print);
-			if (philo_died(data) && someone_died() == false)
-			{
-				data->philo.state = DEAD;
-				sem_open("/death", O_CREAT, 0644, 0);
-				printf("%llu %d %s\n", ft_get_time() - data->start_time,
-					data->philo.id, DIED);
-				sem_post(data->sem_print);
-				return (NULL);
-			}
+			printf("%llu philosopher %d is dead\n", time, data->philo.id);
 			sem_post(data->sem_print);
+			exit(0);
 		}
+		ft_usleep(5);
 	}
-	return (NULL);
 }
-
-/*
-sem_open("/death", O_CREAT, 0644, 0); sirve para avisar a los demas hilos
-de que uno de ellos ha muerto
-*/

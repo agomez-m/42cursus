@@ -6,14 +6,14 @@
 #    By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 15:57:12 by agomez-m          #+#    #+#              #
-#    Updated: 2024/02/02 19:27:06 by agomez-m         ###   ########.fr        #
+#    Updated: 2024/02/06 13:58:30 by agomez-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_bonus
 CC = gcc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -pthread -g -fsanitize=thread
 
 SRC_DIR = sources/
 OBJ_DIR = objects/
