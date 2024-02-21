@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:30:28 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:54:42 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	set_processes(t_philo *p)
 			return (1);
 		else if (tmp->pid == 0)
 		{
-			if (pthread_create(&thread, NULL, &bigbrother, tmp) != 0)
+			if (pthread_create(&thread, NULL, &monitor, tmp) != 0)
 				return (1);
 			if (pthread_detach(thread) != 0)
 				return (1);

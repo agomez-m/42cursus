@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:34:26 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:54:28 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	printstate(t_philo *p, int state, struct timeval t)
 	return (0);
 }
 
-void	*bigbrother(void *philo)
+void	*monitor(void *philo)
 {
 	t_philo	*p;
 

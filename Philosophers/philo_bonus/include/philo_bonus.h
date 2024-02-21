@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:43:27 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:57:14 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # define SLEEPING 2
 # define THINKING 3
 # define DEAD 4
-# define INTMAX	2147483647
-# define INTMIN	-2147483648
 
 typedef struct s_data
 {
@@ -78,15 +76,15 @@ int				set_processes(t_philo *p);
 int				seminit(t_data *data);
 
 int				grab_fork(t_philo *p);
-int				eat(t_philo *p);
-int				nap(t_philo *p);
+int				ft_eat(t_philo *p);
+int				ft_sleep(t_philo *p);
 int				think(t_philo *p);
 int				philo_routine(t_philo *p);
 
 int				set_offset(t_philo *p);
 int				deathcheck(t_philo *p);
 int				printstate(t_philo *p, int state, struct timeval t);
-void			*bigbrother(void *philo);
+void			*monitor(void *philo);
 
 int				drop_fork(t_philo *p);
 void			endr(t_philo *p);
