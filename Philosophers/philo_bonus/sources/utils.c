@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:47:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/01 19:45:30 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:35:04 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,110 +14,69 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	count;
-
-	count = 0;
-	while (*s != '\0')
-	{
-		count++;
-		s++;
-	}
-	return (count);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*str;
-	int		total;
-	int		i;
-	int		j;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	if (s2 == NULL)
-		return (s1);
-	total = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char *) malloc(total * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	while (s1[j])
-		str[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		str[i++] = s2[j++];
-	str[i] = 0;
-	free(s2);
-	return (str);
+	while (s[i])
+		i++;
+	return (i);
 }
 
-int	ft_atoi(char *str)
+long long	ft_long_atoi(const char *nptr)
 {
-	int		count;
-	long	result;
-	int		sign;
+	long long	res;
+	int			sign;
 
-	count = 0;
-	result = 0;
 	sign = 1;
-	while (str[count] == '\r' || str[count] == '\t' || str[count] == ' '
-		|| str[count] == '\f' || str[count] == '\v' || str[count] == '\n')
-		count++;
-	if (str[count] == '-' || str[count] == '+')
+	res = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		if (str[count] == '-')
+		if (*nptr == '-')
 			sign = -1;
-		count++;
+		nptr++;
 	}
-	if (!(str[count] >= '0' && str[count] <= '9'))
-		return (0);
-	while (str[count] >= '0' && str[count] <= '9')
+	if (ft_strlen(nptr) > 10)
+		return (2147483648);
+	while ((*nptr >= 48 && *nptr <= 57) && *nptr)
 	{
-		result = result * 10 + (str[count] - '0');
-		count++;
+		res = res * 10 + *nptr - '0';
+		nptr++;
 	}
-	return (result * sign);
+	return (res * sign);
 }
 
-int	ft_num_digits(long n)
+void	ft_bzero(void *s, size_t n)
 {
-	int	count;
+	size_t	i;
 
-	count = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
+	i = 0;
+	while (i < n)
 	{
-		n = n / 10;
-		count++;
+		((unsigned char *)s)[i] = '\0';
+		i++;
 	}
-	return (count);
 }
 
-char	*ft_itoa(int n)
+long long	ft_min(long long a, long long b)
 {
-	long	new_n;
-	int		size;
-	char	*result;
-	int		index;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
-	new_n = n;
-	index = 0;
-	if (n < 0)
+void	endr(t_philo *p)
+{
+	int	i;
+
+	i = p->d->n_philo;
+	while (i--)
 	{
-		new_n = (long)n * (-1);
-		index = 1;
+		if (sem_post(p->d->sem_end) != 0)
+		{
+			printf("Error: sem_post (sem_end)\n");
+			exit(1);
+		}
 	}
-	size = ft_num_digits(new_n) + index;
-	result = malloc(sizeof(char) * (size + 1));
-	if (!result)
-		return (NULL);
-	result[size] = '\0';
-	if (index == 1)
-		result[0] = '-';
-	while (index != size)
-	{
-		result[size-- - 1] = (new_n % 10) + '0';
-		new_n = new_n / 10;
-	}
-	return (result);
 }

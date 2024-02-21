@@ -6,26 +6,47 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:04:12 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/04 18:34:28 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:34:44 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
-u_int64_t	ft_get_time(void)
+int	set_time(t_philo *p)
 {
-	struct timeval	tv;
-
-	if (gettimeofday(&tv, NULL))
-		return (0);
-	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
+	if (sem_wait(p->d->sem_time) == 0)
+	{
+		if (gettimeofday(&p->t, NULL) == -1)
+		{
+			printf("Error: gettimeofday\n");
+			return (1);
+		}
+		if (sem_post(p->d->sem_time) != 0)
+			printf("Error: sem_post (time)\n");
+	}
+	return (0);
 }
 
-void	ft_usleep(uint64_t sleep_time)
+struct timeval	now(t_philo *p)
 {
-	u_int64_t	start;
+	struct timeval	now;
 
-	start = ft_get_time();
-	while ((ft_get_time() - start) < sleep_time)
-		usleep(500);
+	ft_bzero(&now, sizeof(struct timeval));
+	if (sem_wait(p->d->sem_time) == 0)
+	{
+		now = p->t;
+		if (sem_post(p->d->sem_time) != 0)
+			printf("Error: sem_post (time)\n");
+	}
+	return (now);
+}
+
+long long	utime(struct timeval t)
+{
+	return (t.tv_sec * 1000000 + t.tv_usec);
+}
+
+long long	deltatime(struct timeval t0, struct timeval t1)
+{
+	return ((utime(t1) - utime(t0)) / 1000);
 }

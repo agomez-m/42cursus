@@ -6,58 +6,44 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:54:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/06 14:21:14 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:32:24 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
-int	set_philo(t_data *data, int id)
+int	nap(t_philo *p)
 {
-	char	*sem_name;
-
-	sem_name = ft_strjoin("/philo_", ft_itoa(id));
-	if (sem_name == NULL)
-		exit(1);
-	sem_unlink(sem_name);
-	data->philo.sem_philo = sem_open(sem_name, O_CREAT, 0644, 1);
-	sem_unlink(sem_name);
-	free(sem_name);
-	data->philo.id = id;
-	if (pthread_create(&data->monitor, NULL, &monitor_death, data))
+	if (printstate(p, SLEEPING, now(p)) == 1)
 		return (1);
-	if (pthread_detach(data->monitor))
-	{
-		perror("pthread_detach");
-		exit(1);
-	}
+	usleep(p->d->t_sleep);
 	return (0);
 }
 
-bool	stop_if(t_state	state)
+int	think(t_philo *p)
 {
-	if (state == DEAD)
-		return (true);
-	if (state == FINISH)
-		return (true);
-	if (state == FULL)
-		return (true);
-	return (false);
+	if (printstate(p, THINKING, now(p)) == 1)
+		return (1);
+	usleep(p->d->t_think);
+	return (0);
 }
 
-int	ft_routine(t_data *data, int id)
+int	philo_routine(t_philo *p)
 {
-	if (set_philo (data, id))
-		exit(1);
-	while (true)
+	set_time(p);
+	while (1)
 	{
-		if (ft_eat(data) || stop_if(get_philo_state(data)))
-			break ;
-		if (ft_sleep(data) || stop_if(get_philo_state(data)))
-			break ;
-		if (ft_think(data))
-			break ;
+		if (p->d->n_philo < 2)
+			continue ;
+		sem_wait(p->d->sem_go);
+		if (grab_fork(p) == 0 && grab_fork(p) == 0)
+		{
+			sem_post(p->d->sem_go);
+			if (eat(p) == 1 || nap(p) == 1 || think(p) == 1)
+				endr(p);
+		}
+		else
+			endr(p);
 	}
-	sem_close(data->philo.sem_philo);
-	exit(0);
+	return (0);
 }

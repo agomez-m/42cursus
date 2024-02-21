@@ -6,101 +6,100 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/06 13:56:38 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:43:27 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
-# include <unistd.h> //fork() getpid() sleep() usleep() write() 
-# include <stdio.h> //printf()
-# include <stdlib.h> //malloc() free() exit()
-# include <string.h> //memset() 
-# include <sys/time.h> //gettimeofday() 
-# include <stdint.h> //uint64_t 
-# include <stdbool.h> //bool
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
+# include <pthread.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <semaphore.h>
+# include <signal.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
-# include <pthread.h> // pthread_create() pthread_detach() pthread_join()
-# include <semaphore.h> // sem_open() sem_close() sem_post() sem_wait()
-# include <sys/wait.h> // waitpid() 
-# include <fcntl.h> // O_CREAT O_EXCL O_RDWR
-
-# define TAKE_FORK "has taken a fork"
-# define THINK "is thinking"
-# define SLEEP "is sleeping"
-# define EAT "is eating"
-# define DIED "died"
-
-typedef enum e_philo_state
-{
-	EATING,
-	SLEEPING,
-	DEAD,
-	FULL,
-	IDLE,
-	FINISH
-}			t_state;
-
-struct	s_data;
-
-typedef struct s_philo
-{
-	int				id;
-	int				nb_meals_had;
-	bool			is_dead;
-	struct s_data	*data;
-	t_state			state;
-	u_int64_t		last_eat_time;
-	sem_t			*sem_philo;
-}				t_philo;
+# define FORK 0
+# define EATING 1
+# define SLEEPING 2
+# define THINKING 3
+# define DEAD 4
+# define INTMAX	2147483647
+# define INTMIN	-2147483648
 
 typedef struct s_data
 {
-	int				nb_philos;
-	int				nb_meals;
-	u_int64_t		eat_time;
-	u_int64_t		sleep_time;
-	u_int64_t		die_time;
-	u_int64_t		start_time;
+	int				n_philo;
+	long long		t_die;
+	long long		t_eat;
+	long long		t_sleep;
+	long long		t_think;
+	long long		*cap;
+	struct timeval	offset;
 	sem_t			*sem_forks;
 	sem_t			*sem_print;
-	pthread_t		monitor;
-	t_philo			philo;
-}				t_data;
+	sem_t			*sem_death;
+	sem_t			*sem_go;
+	sem_t			*sem_end;
+	sem_t			*sem_time;
+}	t_data;
 
-// init.c
-int			ft_init_data(t_data *data, int argc, char **argv);
-// time.c
-u_int64_t	ft_get_time(void);
-void		ft_usleep(uint64_t sleep_time);
-void		ft_usleep1(uint64_t sleep_time, uint64_t lastime);
-// utils.c
-int			ft_atoi(char *str);
-char		*ft_itoa(int n);
-char		*ft_strjoin(char *s1, char *s2);
-// routine.c
-int			set_philo(t_data *data, int id);
-bool		stop_if(t_state state);
-int			ft_routine(t_data *data, int id);
-// monitor.c
-bool		someone_died(void);
-bool		philo_died(t_data *data);
-void		*monitor_death(void *data_p);
-// eat.c
-int			ft_eat(t_data *data);
-bool		philo_is_full(t_data *data);
-bool		nb_meals_option_given(t_data *data);
-// sem.c
-void		set_philo_state(t_data *data, t_state state);
-void		update_last_meal_time(t_data *data);
-t_state		get_philo_state(t_data *data);
-uint64_t	get_last_eat_time(t_data *data);
-// sleepthink.c
-int			ft_sleep(t_data *data);
-int			ft_think(t_data *data);
-// inoutput.c
-int			ft_check_args(int argc, char **argv);
-int			print_msg(t_data *data, char *msg);
+typedef struct s_philo
+{
+	int					id;
+	pid_t				pid;
+	t_data				*d;
+	struct timeval		t0;
+	struct timeval		t;
+	int					meals;
+	struct s_philo		*prev;
+	struct s_philo		*next;
+}	t_philo;
+
+int				ft_check_args(int argc, char **argv);
+int				datacheck(t_data *d);
+t_data			*get_data(char **argv);
+
+int				set_time(t_philo *p);
+struct timeval	now(t_philo *p);
+long long		utime(struct timeval t);
+long long		deltatime(struct timeval t0, struct timeval t1);
+
+t_philo			*philo_new(int id, t_data *data);
+void			philo_add(t_philo **p, t_philo *new);
+t_philo			*philo_init(t_data *data);
+int				set_processes(t_philo *p);
+int				seminit(t_data *data);
+
+int				grab_fork(t_philo *p);
+int				eat(t_philo *p);
+int				nap(t_philo *p);
+int				think(t_philo *p);
+int				philo_routine(t_philo *p);
+
+int				set_offset(t_philo *p);
+int				deathcheck(t_philo *p);
+int				printstate(t_philo *p, int state, struct timeval t);
+void			*bigbrother(void *philo);
+
+int				drop_fork(t_philo *p);
+void			endr(t_philo *p);
+int				philo_waiter(t_philo *p);
+
+int				semunlinker(void);
+int				semdestroyer(t_data *d);
+int				datafree(t_data *d);
+void			philofree(t_philo *p);
+
+size_t			ft_strlen(const char *s);
+long long		ft_long_atoi(const char *nptr);
+void			ft_bzero(void *s, size_t n);
+long long		ft_min(long long a, long long b);
 
 #endif
