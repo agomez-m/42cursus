@@ -6,11 +6,12 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:55:07 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/07 11:27:20 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:49:48 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+
 #include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
