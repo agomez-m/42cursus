@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:54:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:56:59 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:36:05 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_think(t_philo *p)
 	return (0);
 }
 
-int	philo_routine(t_philo *p)
+int	ft_routine(t_philo *p)
 {
 	set_time(p);
 	while (1)
@@ -47,3 +47,5 @@ int	philo_routine(t_philo *p)
 	}
 	return (0);
 }
+
+/* con continue evitamos el resto de codigo del bucle si es cierto que hay 1 filo*/

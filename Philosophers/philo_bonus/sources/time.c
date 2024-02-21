@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:04:12 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:34:44 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:14:46 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,19 @@ struct timeval	now(t_philo *p)
 {
 	struct timeval	now;
 
-	ft_bzero(&now, sizeof(struct timeval));
 	if (sem_wait(p->d->sem_time) == 0)
 	{
 		now = p->t;
 		if (sem_post(p->d->sem_time) != 0)
 			printf("Error: sem_post (time)\n");
 	}
+	else
+		now = p->t;
 	return (now);
 }
+
+/* else esta puesto para escapar del error de no usar now si el if fuera false
+	pero realmente no lo usamos */
 
 long long	utime(struct timeval t)
 {

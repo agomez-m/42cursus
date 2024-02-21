@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:40:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 17:10:10 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:47:25 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,3 +62,5 @@ int	ft_eat(t_philo *p)
 		sem_post(p->d->sem_end);
 	return (0);
 }
+
+/* con sem_post(p->d->sem_end); indicamos que ha llegado al CAP de comidas*/

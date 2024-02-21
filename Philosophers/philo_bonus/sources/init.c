@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:54:42 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_philo	*philo_new(int id, t_data *data)
 	p = malloc(sizeof(t_philo));
 	if (!p)
 		return (NULL);
-	ft_bzero(p, sizeof(t_philo));
 	p->id = id;
 	p->d = data;
 	return (p);
@@ -43,7 +42,7 @@ void	philo_add(t_philo **p, t_philo *new)
 	(*p)->prev = new;
 }
 
-t_philo	*philo_init(t_data *data)
+t_philo	*ft_philo_init(t_data *data)
 {
 	int		i;
 	t_philo	*p;
@@ -57,7 +56,7 @@ t_philo	*philo_init(t_data *data)
 		new = philo_new(i, data);
 		if (!new)
 		{
-			philofree(p);
+			ft_philofree(p);
 			datafree(data);
 			return (NULL);
 		}
@@ -66,7 +65,7 @@ t_philo	*philo_init(t_data *data)
 	return (p);
 }
 
-int	set_processes(t_philo *p)
+int	ft_run(t_philo *p)
 {
 	t_philo		*tmp;
 	int			i;
@@ -82,11 +81,11 @@ int	set_processes(t_philo *p)
 			return (1);
 		else if (tmp->pid == 0)
 		{
-			if (pthread_create(&thread, NULL, &monitor, tmp) != 0)
+			if (pthread_create(&thread, NULL, &ft_monitor, tmp) != 0)
 				return (1);
 			if (pthread_detach(thread) != 0)
 				return (1);
-			exit(philo_routine(tmp));
+			exit(ft_routine(tmp));
 		}
 		else
 			tmp = tmp->next;
@@ -94,7 +93,14 @@ int	set_processes(t_philo *p)
 	return (0);
 }
 
-int	seminit(t_data *data)
+/* 	Con exit(philo_routine(tmp)) salimos del proceso hijo ejecutando su rutina 
+	Con pthread_create(&thread, NULL, &monitor, tmp) creamos un hilo 
+	que ejecuta la función monitor con el argumento tmp
+	Con pthread_detach(thread) desvinculamos el hilo 
+	creado con el proceso principal
+*/
+
+int	ft_sem_init(t_data *data)
 {
 	sem_unlink("forks");
 	data->sem_forks = sem_open("forks", O_CREAT, 0644, data->n_philo);
@@ -122,3 +128,13 @@ int	seminit(t_data *data)
 		return (1);
 	return (0);
 }
+
+/*
+
+"death": Este es el nombre del semáforo para identificarlos
+O_CREAT: el semáforo debe ser creado si no existe. Si el semáforo ya existe, esta bandera no tiene ningún efecto.
+0644: permisos para el semáforo. 0644 especifica que el propietario tiene permisos de lectura y escritura, 
+y que el grupo y otros tienen permisos de solo lectura.
+1: indica que el recurso está disponible y puede ser utilizado por un solo proceso a la vez.
+
+*/

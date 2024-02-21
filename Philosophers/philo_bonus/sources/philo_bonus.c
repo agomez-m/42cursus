@@ -6,18 +6,17 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:55:47 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:47:16 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:28:56 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
-t_data	*get_data(char **argv)
+t_data	*ft_get_data(char **argv)
 {
 	t_data	*d;
 
 	d = malloc(sizeof(t_data));
-	ft_bzero(d, sizeof(t_data));
 	d->n_philo = ft_long_atoi(argv[1]);
 	d->t_die = ft_long_atoi(argv[2]);
 	d->t_eat = ft_long_atoi(argv[3]);
@@ -35,7 +34,7 @@ t_data	*get_data(char **argv)
 	return (d);
 }
 
-int	philo_waiter(t_philo *p)
+int	ft_waiter(t_philo *p)
 {
 	int		i;
 	t_philo	*tmp;
@@ -53,6 +52,14 @@ int	philo_waiter(t_philo *p)
 	return (0);
 }
 
+/*
+	puntero temporal tmp para iterar sobre los filósofos
+	philo_waiter espera a que todos los filósofos terminen sus cenas 
+	y luego finaliza todos los procesos asociados a los filósofos
+	se encarga de esperar a que todos los semáforos sem_end estén en 1, 
+	lo que indica que todos los filósofos han terminado sus cenas
+*/
+
 int	main(int argc, char **argv)
 {
 	t_data	*d;
@@ -60,19 +67,19 @@ int	main(int argc, char **argv)
 
 	if (ft_check_args(argc, argv) == 1)
 		return (1);
-	d = get_data(argv);
+	d = ft_get_data(argv);
 	if (!d)
 		return (1);
-	p = philo_init(d);
+	p = ft_philo_init(d);
 	if (!p)
 		return (1);
-	if (seminit(d) == 1 || set_processes(p) == 1)
+	if (ft_sem_init(d) == 1 || ft_run(p) == 1)
 	{
-		philofree(p);
+		ft_philofree(p);
 		return (1);
 	}
-	philo_waiter(p);
-	semdestroyer(d);
-	philofree(p);
+	ft_waiter(p);
+	ft_destroyer(d);
+	ft_philofree(p);
 	return (0);
 }

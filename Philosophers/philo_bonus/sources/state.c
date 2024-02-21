@@ -6,58 +6,11 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:54:28 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:30:40 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
-
-int	set_offset(t_philo *p)
-{
-	int		i;
-	t_philo	*tmp;
-
-	if (gettimeofday(&p->d->offset, NULL) == -1)
-	{
-		printf("Error: gettimeofday\n");
-		return (1);
-	}
-	i = p->d->n_philo;
-	tmp = p;
-	while (i--)
-	{
-		tmp->t0 = p->d->offset;
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-int	deathcheck(t_philo *p)
-{
-	if (sem_wait(p->d->sem_death) == 0)
-	{
-		if (set_time(p) == 0)
-		{
-			if (utime(p->t) - utime(p->t0) > p->d->t_die)
-			{
-				printstate(p, 4, p->t);
-				endr(p);
-				return (0);
-			}
-		}
-		if (sem_post(p->d->sem_death) != 0)
-		{
-			printf("Error: sem_post (sem_death)\n");
-			return (1);
-		}
-	}
-	else
-	{
-		printf("Error: sem_wait (sem_death)\n");
-		return (1);
-	}
-	return (0);
-}
 
 int	printstate(t_philo *p, int state, struct timeval t)
 {
@@ -88,7 +41,62 @@ int	printstate(t_philo *p, int state, struct timeval t)
 	return (0);
 }
 
-void	*monitor(void *philo)
+int	set_offset(t_philo *p)
+{
+	int		i;
+	t_philo	*tmp;
+
+	if (gettimeofday(&p->d->offset, NULL) == -1)
+	{
+		printf("Error: gettimeofday\n");
+		return (1);
+	}
+	i = p->d->n_philo;
+	tmp = p;
+	while (i--)
+	{
+		tmp->t0 = p->d->offset;
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+/* ponemos t0 a todos los philos */
+
+int	deathcheck(t_philo *p)
+{
+	if (sem_wait(p->d->sem_death) == 0)
+	{
+		if (set_time(p) == 0)
+		{
+			if (utime(p->t) - utime(p->t0) > p->d->t_die)
+			{
+				printstate(p, DEAD, p->t);
+				endr(p);
+				return (0);
+			}
+		}
+		if (sem_post(p->d->sem_death) != 0)
+		{
+			printf("Error: sem_post (sem_death)\n");
+			return (1);
+		}
+	}
+	else
+	{
+		printf("Error: sem_wait (sem_death)\n");
+		return (1);
+	}
+	return (0);
+}
+
+/*	calcula la diferencia entre el tiempo actual (p->t) 
+	y el tiempo en el que comenzó su última comida (p->t0). 
+	Si esta diferencia de tiempo supera el tiempo máximo permitido para 
+	que un filósofo esté sin comer (p->d->t_die), se considera que 
+	el filósofo ha muerto de inanición*/
+
+void	*ft_monitor(void *philo)
 {
 	t_philo	*p;
 

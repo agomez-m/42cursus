@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:57:14 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:46 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,39 +62,30 @@ typedef struct s_philo
 
 int				ft_check_args(int argc, char **argv);
 int				datacheck(t_data *d);
-t_data			*get_data(char **argv);
-
 int				set_time(t_philo *p);
 struct timeval	now(t_philo *p);
 long long		utime(struct timeval t);
 long long		deltatime(struct timeval t0, struct timeval t1);
-
 t_philo			*philo_new(int id, t_data *data);
 void			philo_add(t_philo **p, t_philo *new);
-t_philo			*philo_init(t_data *data);
-int				set_processes(t_philo *p);
-int				seminit(t_data *data);
-
+t_philo			*ft_philo_init(t_data *data);
+int				ft_run(t_philo *p);
+int				ft_sem_init(t_data *data);
 int				grab_fork(t_philo *p);
 int				ft_eat(t_philo *p);
 int				ft_sleep(t_philo *p);
 int				think(t_philo *p);
-int				philo_routine(t_philo *p);
-
+int				ft_routine(t_philo *p);
 int				set_offset(t_philo *p);
 int				deathcheck(t_philo *p);
 int				printstate(t_philo *p, int state, struct timeval t);
-void			*monitor(void *philo);
-
-int				drop_fork(t_philo *p);
+void			*ft_monitor(void *philo);
 void			endr(t_philo *p);
-int				philo_waiter(t_philo *p);
-
+int				ft_waiter(t_philo *p);
 int				semunlinker(void);
-int				semdestroyer(t_data *d);
+int				ft_destroyer(t_data *d);
 int				datafree(t_data *d);
-void			philofree(t_philo *p);
-
+void			ft_philofree(t_philo *p);
 size_t			ft_strlen(const char *s);
 long long		ft_long_atoi(const char *nptr);
 void			ft_bzero(void *s, size_t n);

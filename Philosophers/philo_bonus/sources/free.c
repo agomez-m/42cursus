@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:45:04 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:36:26 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:28:32 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	datafree(t_data *d)
 	return (0);
 }
 
-void	philofree(t_philo *p)
+void	ft_philofree(t_philo *p)
 {
 	t_philo	*tmp;
 	t_philo	*next;
@@ -60,7 +60,7 @@ int	semunlinker(void)
 	return (0);
 }
 
-int	semdestroyer(t_data *d)
+int	ft_destroyer(t_data *d)
 {
 	if (sem_close(d->sem_forks) != 0 || sem_close(d->sem_print) != 0)
 	{

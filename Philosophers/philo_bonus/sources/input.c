@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:51:46 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:40:15 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:09:08 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	wrong_input_check(int argc, char **argv)
 		printf("Error: Wrong number of philosophers\n");
 		return (1);
 	}
-	if (ft_long_atoi(argv[2]) < 60 || ft_long_atoi(argv[3]) < 60 || ft_long_atoi(argv[4]) < 60)
+	if (ft_long_atoi(argv[2]) < 60 || ft_long_atoi(argv[3]) < 60 \
+		|| ft_long_atoi(argv[4]) < 60)
 	{
 		printf("Error: Wrong time\n");
 		return (1);

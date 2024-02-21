@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:47:37 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 16:35:04 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:09:25 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,6 @@ long long	ft_long_atoi(const char *nptr)
 		nptr++;
 	}
 	return (res * sign);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = '\0';
-		i++;
-	}
 }
 
 long long	ft_min(long long a, long long b)
