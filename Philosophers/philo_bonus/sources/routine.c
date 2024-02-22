@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:54:35 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 18:36:05 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:43:59 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ int	ft_routine(t_philo *p)
 	return (0);
 }
 
-/* con continue evitamos el resto de codigo del bucle si es cierto que hay 1 filo*/
+/* con continue evitamos el resto de codigo del bucle 
+si es cierto que hay 1 filo*/

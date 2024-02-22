@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:56:48 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/04 12:27:32 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:42:08 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,5 @@ int			ft_atoi(char *str);
 int			handle_1_philo(t_philo *philo);
 bool		nb_meals_optional(t_data *data);
 void		ft_print_msg(t_data *data, int id, char *msg);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:43:39 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,12 @@ int	ft_sem_init(t_data *data)
 /*
 
 "death": Este es el nombre del semáforo para identificarlos
-O_CREAT: el semáforo debe ser creado si no existe. Si el semáforo ya existe, esta bandera no tiene ningún efecto.
-0644: permisos para el semáforo. 0644 especifica que el propietario tiene permisos de lectura y escritura, 
+O_CREAT: el semáforo debe ser creado si no existe. Si el semáforo ya existe,
+esta bandera no tiene ningún efecto.
+0644: permisos para el semáforo. 0644 especifica que el propietario 
+tiene permisos de lectura y escritura, 
 y que el grupo y otros tienen permisos de solo lectura.
-1: indica que el recurso está disponible y puede ser utilizado por un solo proceso a la vez.
+1: indica que el recurso está disponible y puede ser 
+utilizado por un solo proceso a la vez.
 
 */
