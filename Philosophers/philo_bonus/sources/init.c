@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:19:55 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/22 11:43:39 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:32:20 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_run(t_philo *p)
 				return (1);
 			if (pthread_detach(thread) != 0)
 				return (1);
-			exit(ft_routine(tmp));
+			exit(ft_routine(tmp)); 
 		}
 		else
 			tmp = tmp->next;
@@ -93,11 +93,21 @@ int	ft_run(t_philo *p)
 	return (0);
 }
 
-/* 	Con exit(philo_routine(tmp)) salimos del proceso hijo ejecutando su rutina 
+/* 	else if (tmp->pid == 0) //proceso hijo
+	else // proceso padre
+	
+	Con exit(philo_routine(tmp)) salimos del proceso hijo ejecutando su rutina 
+	también devuelve un valor que puede ser utilizado por el proceso padre
+	para determinar si la ejecución del hijo fue exitosa o no.
+	
 	Con pthread_create(&thread, NULL, &monitor, tmp) creamos un hilo 
 	que ejecuta la función monitor con el argumento tmp
+	
 	Con pthread_detach(thread) desvinculamos el hilo 
 	creado con el proceso principal
+	Esto asegura que los recursos del hilo se liberen automáticamente 
+	cuando el hilo termine su ejecución, evitando la necesidad de llamar 
+	a pthread_join()
 */
 
 int	ft_sem_init(t_data *data)
@@ -130,6 +140,14 @@ int	ft_sem_init(t_data *data)
 }
 
 /*
+
+death -> 	para controlar la muerte de los filósofos y 
+go -> 		para controlar el acceso a los tenedores
+end -> 		para controlar el final de la cena
+time -> 	para controlar el acceso a la hora
+forks -> 	para controlar el acceso a los tenedores
+print -> 	para controlar la impresión de los estados de los filósofos
+
 
 "death": Este es el nombre del semáforo para identificarlos
 O_CREAT: el semáforo debe ser creado si no existe. Si el semáforo ya existe,

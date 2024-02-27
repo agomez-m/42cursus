@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:41 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 18:30:40 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/26 22:58:09 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int	set_offset(t_philo *p)
 	return (0);
 }
 
-/* ponemos t0 a todos los philos */
+/* 
+Usamos tmp para no perder la referencia a p
+ponemos t0 a todos los philos */
 
 int	deathcheck(t_philo *p)
 {

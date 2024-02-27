@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:55:47 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 18:28:56 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/26 20:26:40 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_data	*ft_get_data(char **argv)
 		d->t_think = (d->t_die - d->t_eat - d->t_sleep) / 2;
 	return (d);
 }
+
+//  * 1000; se convierte a microsegundos para usar usleep
 
 int	ft_waiter(t_philo *p)
 {

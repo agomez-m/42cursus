@@ -6,7 +6,7 @@
 /*   By: agomez-m <agomez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:40:08 by agomez-m          #+#    #+#             */
-/*   Updated: 2024/02/21 17:47:25 by agomez-m         ###   ########.fr       */
+/*   Updated: 2024/02/27 00:02:29 by agomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	ft_eat(t_philo *p)
 	}
 	printstate(p, EATING, now(p));
 	usleep(ft_min(p->d->t_eat, p->d->t_die));
-	p->t0 = now(p);
 	if (drop_fork(p) == 1 || drop_fork(p) == 1)
 		return (1);
 	if (p->d->cap != NULL && ++p->meals == *p->d->cap)
@@ -63,4 +62,6 @@ int	ft_eat(t_philo *p)
 	return (0);
 }
 
-/* con sem_post(p->d->sem_end); indicamos que ha llegado al CAP de comidas*/
+/* 
+	con (sem_wait(p->d->sem_death) == 0) cambiamos t0 sin condiciones de carrera
+	con sem_post(p->d->sem_end); indicamos que ha llegado al CAP de comidas*/
