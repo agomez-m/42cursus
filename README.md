@@ -47,6 +47,7 @@ In this repository, you'll find a collection of projects completed as part of th
    - Inspired by:
      - [YouTube video](https://www.youtube.com/watch?v=UGQsvVKwe90)
      - [Youtube playlist](https://www.youtube.com/playlist?list=PLGU1kcPKHMKi41Py2kqxdvqYE3M9VhCHe)
+     - [Jamshidbek2000](https://github.com/Jamshidbek2000/philosophers_42)
 
 ## Objectives
 
